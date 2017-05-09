@@ -73,9 +73,9 @@ class HelpButtonStudent: UIViewController
     
     @IBAction func cancelButton(_ sender: Any)
     {
+        print("Nothing Should Happen, too Much work for firebase code")
         self.helpButton.image = UIImage(named: "helpbutton")
-        
-        let myRefPull = ref.child("Users/\(teacherID)/Teacher/Help Section")
-        myRefPull.removeValue()
+//        
+//        let myRefPull = ref.child("Users/\(teacherID)/Teacher/Help Section/StudentName")
     }
 }

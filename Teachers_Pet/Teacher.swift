@@ -55,7 +55,7 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
         }, withCancel: nil)
         
         loopGrab(loopStart: 1, loopEnd: 100)
-        
+
     }
     
     func loopGrab(loopStart : Int, loopEnd : Int)
@@ -141,6 +141,17 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
         cell.detailTextLabel?.text = ""
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let teacherClassMenu = storyboard?.instantiateViewController(withIdentifier: "TeacherClassMainMenu") as! TeacherClassMainMenu
+        let helpInfoShow = storyboard?.instantiateViewController(withIdentifier: "HelpViewTeacher") as! HelpViewTeacherViewController
+        print("\(indexPath.item + 1)")
+        teacherClassMenu.classNumberFromPrevious = "\(indexPath.item + 1)"
+        helpInfoShow.classNumber = "\(indexPath.item + 1)"
+        
+        navigationController?.pushViewController(teacherClassMenu, animated: true)
     }
 
 }

@@ -336,6 +336,8 @@ class ViewController: UIViewController
         let defaultAction = UIAlertAction(title: "Ok", style: .cancel, handler : nil)
         alertController.addAction(defaultAction)
         present(alertController, animated: true, completion: nil)
+        
+        
     }
 
    
