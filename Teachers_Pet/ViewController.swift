@@ -300,17 +300,26 @@ class ViewController: UIViewController
                 if let dictionary = snapshot.value as? [String: AnyObject]
                 {
                     let className = dictionary["Class Name"] as! String
+                    let codeNumber = dictionary["Code Number"] as! String
                     let teacher = dictionary["Teacher"] as! String
                     let teacherID = dictionary["Teacher ID"] as! String
                     let uses = dictionary["Uses"] as? String
-                    
-                    
-                    let classesDetail = ["TeacherName" : teacher, "ClassName" : className, "TeacherID" : teacherID]
-                    //let studentEnrolled = ["Student Name" : yourName, "Student ID" : self.uidTemp]
-                    
-                    set(classesDetail, forKey: "Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName1")
-                    set(className, forKey: "Users/\(teacherID)/Teacher/ClassName1/ClassName")
-                    set(yourName, forKey: "Users/\(teacherID)/Teacher/ClassName1/Students Enrolled/StudentName1")
+                
+                    ref.child("Users/\(teacherID)/Teacher/ClassName\(codeNumber)/Students Enrolled").observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        if let dictionary = snapshot.value as? [String: AnyObject]
+                        {
+                            let studentCount = (dictionary.count + 1)
+                            
+                            let classesDetail = ["TeacherName" : teacher, "ClassName" : className, "TeacherID" : teacherID]
+                            //let studentEnrolled = ["Student Name" : yourName, "Student ID" : self.uidTemp]
+                            
+                            set(classesDetail, forKey: "Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName1")
+                            set(className, forKey: "Users/\(teacherID)/Teacher/ClassName\(codeNumber)/ClassName")
+                            set(yourName, forKey: "Users/\(teacherID)/Teacher/ClassName\(codeNumber)/Students Enrolled/StudentName\(studentCount)")
+                        }
+                        
+                    }, withCancel: nil)
                 }
                 
                 
@@ -336,8 +345,6 @@ class ViewController: UIViewController
         let defaultAction = UIAlertAction(title: "Ok", style: .cancel, handler : nil)
         alertController.addAction(defaultAction)
         present(alertController, animated: true, completion: nil)
-        
-        
     }
 
    

@@ -79,7 +79,7 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
             //loopAndUpdate(index: indexPath)
             
             studentName.remove(at: indexPath.row)
-            print(studentName[indexPath.row])
+            print([indexPath.row])
             helpShowTableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
