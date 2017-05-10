@@ -77,7 +77,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
     @IBAction func plusButtonTapped(_ sender: Any)
     {
         let actions = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        actions.addAction(UIAlertAction(title: "Enter a Class Code", style: .default, handler: redemption))
+        actions.addAction(UIAlertAction(title: "Enter a Class Code", style: .default, handler: enterTheClassCode))
         actions.addAction(cancelAction)
         present(actions, animated: true, completion: nil)
     }
@@ -99,7 +99,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
         }, withCancel: nil)
     }
 
-    func redemption(_: UIAlertAction)
+    func enterTheClassCode(_: UIAlertAction)
     {
         let alert = UIAlertController(title: "Enter a code:", message: "(case sensitive)", preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)

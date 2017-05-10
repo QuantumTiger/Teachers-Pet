@@ -56,8 +56,6 @@ class ViewController: UIViewController
 
         else
         {
-            self.alertUICreate()
-            
             FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 
                 if error == nil
@@ -66,6 +64,7 @@ class ViewController: UIViewController
                     //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
                     guard let uid = user?.uid else {return}
                     self.uidTemp = uid
+                    self.alertUICreate()
                 }
                     
                 //Problem with entering something into the email text gives an error
