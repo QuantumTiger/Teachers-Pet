@@ -12,6 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import ChameleonFramework
+import SCLAlertView
 
 class ViewController: UIViewController
 {
@@ -30,7 +31,7 @@ class ViewController: UIViewController
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         myView.backgroundColor = UIColor(gradientStyle: UIGradientStyle.topToBottom, withFrame: myView.frame, andColors: [FlatMint(),FlatMintDark(), FlatOrangeDark(), FlatOrange()])
-        //loginButton.backgroundColor = UIColor(complementaryFlatColorOf: FlatOrange())
+        passwordTextField.isSecureTextEntry = true
     }
     
     
@@ -71,12 +72,9 @@ class ViewController: UIViewController
                 //Problem with entering something into the email text gives an error
                 else
                 {
-                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
+                    let alert = SCLAlertView()
+                    alert.showError("Error", subTitle: (error?.localizedDescription)!)
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }
@@ -157,104 +155,118 @@ class ViewController: UIViewController
     func alertUICreate()
     {
         //Creates the alert for first time users
-        let actions = UIAlertController(title: "Are you a...", message: nil, preferredStyle: .actionSheet)
-        actions.addAction(UIAlertAction(title: "Student", style: .default, handler: self.alertUIStudent))
-        actions.addAction(UIAlertAction(title: "Teacher", style: .default, handler: self.alertUITeacher))
-        actions.addAction(cancelAction)
-        present(actions, animated: true, completion: nil)
+        let alert = SCLAlertView()
+        
+        alert.addButton("Student") { 
+            self.alertUIStudent()
+        }
+        alert.addButton("Teacher") { 
+            self.alertUITeacher()
+        }
+        alert.showWait("Are you a...", subTitle: "")
+        present(alert, animated: true, completion: nil)
+        
     }
     
-    func alertUIStudent(_ : UIAlertAction)
+    func alertUIStudent()
     {
         //Configures text fields for student after proccess is done it should go to student view controller
-        let alert = UIAlertController(title: "Configure", message: nil, preferredStyle: .alert)
-        alert.addTextField
-            { (field) in
-                field.autocapitalizationType = .words
-                field.placeholder = "Your Name"
-        }
-        alert.addTextField
-            { (field) in
-            field.autocapitalizationType = .words
-            field.placeholder = "Class Code"
+        
+        let appearence = SCLAlertView.SCLAppearance()
+        
+        // Initialize SCLAlertView using custom Appearance
+        let alert = SCLAlertView(appearance: appearence)
+        
+        // Creat the subview
+        let subview = UIView(frame: CGRect(x: 0,y: 0,width: 216,height: 70))
+        let x = (subview.frame.width - 180) / 2
+
+        
+        
+        let textFieldName = UITextField(frame: CGRect(x: x,y: 10,width: 180,height: 25))
+        textFieldName.layer.borderColor = UIColor.green.cgColor
+        textFieldName.layer.borderWidth = 1.5
+        textFieldName.layer.cornerRadius = 5
+        textFieldName.textAlignment = NSTextAlignment.center
+        textFieldName.autocapitalizationType = .words
+        textFieldName.placeholder = "Your Name"
+        subview.addSubview(textFieldName)
+
+        let textFieldClassCode = UITextField(frame: CGRect(x: x,y: textFieldName.frame.maxY + 10,width: 180,height: 25))
+        textFieldClassCode.layer.borderWidth = 1.5
+        textFieldClassCode.layer.cornerRadius = 5
+        textFieldClassCode.layer.borderColor = UIColor.blue.cgColor
+        textFieldClassCode.textAlignment = NSTextAlignment.center
+        textFieldClassCode.autocapitalizationType = .words
+        textFieldClassCode.placeholder = "Class Code"
+        subview.addSubview(textFieldClassCode)
+        
+        alert.customSubview = subview
+        _ = alert.addButton("Sign up") {
+            print("Signed up")
+            if textFieldName.text == "" {
+                let alertError = SCLAlertView()
+                alertError.showError("Error", subTitle: "Please enter a name")
+                self.present(alertError, animated: true, completion: nil)
+            } else if textFieldClassCode.text == "" {
+                let alertError = SCLAlertView()
+                alertError.showError("Error", subTitle: "Please Enter a Class Code")
+                self.present(alertError, animated: true, completion: nil)
+            } else {
+                self.addUserToFirebase(textFieldName.text!, textFieldClassCode.text!, "Student")
+            }
         }
         
 
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler:
-            {   _ in
-                
-                if (alert.textFields?[0].text)! == ""
-                {
-                    let alertController = UIAlertController(title: "Error", message: "Please Enter a Name", preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: self.alertUITeacher)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                }
-                else if (alert.textFields?[1].text)! == ""
-                {
-                    let alertController = UIAlertController(title: "Error", message: "Please Enter a Class Code", preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: self.alertUITeacher)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                }
-                else
-                {
-                    self.addUserToFirebase((alert.textFields?[0].text)!, (alert.textFields?[1].text)!, "Student")
-                }
-        }))
         present(alert, animated: true, completion: nil)
         
     }
     
-    func alertUITeacher(_ : UIAlertAction)
+    func alertUITeacher()
     {
-        //Sets up teacher, adds them to firebase
-        let alert = UIAlertController(title: "Setup your Class", message: nil, preferredStyle: .alert)
-        alert.addTextField
-            { (field) in
-                field.autocapitalizationType = .words
-                field.placeholder = "Your Name"
-        }
-        alert.addTextField
-            { (field) in
-                field.autocapitalizationType = .words
-                field.placeholder = "Name of Class"
-        }
-        
-        //Gathers information and puts to firebase and also checks if anything in texts
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler:
-            {   _ in
-                if (alert.textFields?[0].text)! == ""
-                {
-                    let alertController = UIAlertController(title: "Error", message: "Please Enter a Name", preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: self.alertUITeacher)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                }
-                else if (alert.textFields?[1].text)! == ""
-                {
-                    let alertController = UIAlertController(title: "Error", message: "Please Enter a Class Name", preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: self.alertUITeacher)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                }
-                
-                else
-                {
-                    self.addUserToFirebase((alert.textFields?[0].text)!, (alert.textFields?[1].text)!, "Teacher")
-                }
-                
-                
-        }))
-        present(alert, animated: true, completion: nil)
+//        //Sets up teacher, adds them to firebase
+//        let alert = UIAlertController(title: "Setup your Class", message: nil, preferredStyle: .alert)
+//        alert.addTextField
+//            { (field) in
+//                field.autocapitalizationType = .words
+//                field.placeholder = "Your Name"
+//        }
+//        alert.addTextField
+//            { (field) in
+//                field.autocapitalizationType = .words
+//                field.placeholder = "Name of Class"
+//        }
+//        
+//        //Gathers information and puts to firebase and also checks if anything in texts
+//        alert.addAction(UIAlertAction(title: "Done", style: .default, handler:
+//            {   _ in
+//                if (alert.textFields?[0].text)! == ""
+//                {
+//                    let alertController = UIAlertController(title: "Error", message: "Please Enter a Name", preferredStyle: .alert)
+//                    
+//                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: self.alertUITeacher)
+//                    alertController.addAction(defaultAction)
+//                    
+//                    self.present(alertController, animated: true, completion: nil)
+//                }
+//                else if (alert.textFields?[1].text)! == ""
+//                {
+//                    let alertController = UIAlertController(title: "Error", message: "Please Enter a Class Name", preferredStyle: .alert)
+//                    
+//                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: self.alertUITeacher)
+//                    alertController.addAction(defaultAction)
+//                    
+//                    self.present(alertController, animated: true, completion: nil)
+//                }
+//                
+//                else
+//                {
+//                    self.addUserToFirebase((alert.textFields?[0].text)!, (alert.textFields?[1].text)!, "Teacher")
+//                }
+//                
+//                
+//        }))
+//        present(alert, animated: true, completion: nil)
     }
     
     func goToController(storyboardName: String)
@@ -331,12 +343,10 @@ class ViewController: UIViewController
 
     func alertViewNilHandler(_ title: String, _ message: String)
     {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let defaultAction = UIAlertAction(title: "Ok", style: .cancel, handler : nil)
-        alertController.addAction(defaultAction)
-        present(alertController, animated: true, completion: nil)
-        
+        let alert = SCLAlertView()
+        alert.showError(title, subTitle: message)
+        present(alert, animated: true, completion: nil)
+     
         
     }
 

@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Teachers_Pet.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -72,17 +77,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3BEAA91A52AD44C6A1673423984BF0BB</key>
+		<key>1250C623A695113F0B6269546758F80A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1A2943932F420EDF7A29EA9A9F4C3E60</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1CD8F5024F69A0BF46545477D67353D8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>33EE9A37D9A666D861DB0EA0F973E02C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>3C04F32E50948CFEA8F7D9CE9311E77A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6F9E8E2C153B5252BA3A11D7E4E06DE7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,22 +112,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C0460C189641B33E896110CF0AF8A56D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D557418878E1FD5C56B3665F32269263</key>
+		<key>CFD2AA0E7DBB8139C4CA4F099951DDC5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E233660F6A668B339284B93AC2391AD5</key>
+		<key>E14A62900910444707A5504D25EC98DC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,7 +132,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F74B7081C23866C0631C469E6F03A599</key>
+		<key>F47ED8BCA35EAB97BDD231EC1D244B64</key>
 		<dict>
 			<key>primary</key>
 			<true/>
