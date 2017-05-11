@@ -1,3 +1,4 @@
+
 //
 //  HelpViewTeacherViewController.swift
 //  Teachers_Pet
@@ -38,16 +39,12 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
             {
                 let studentsCount = dictionary.count
                 
-                ref.child("Users/\(self.uidTemp)/Teacher/Help Section").observeSingleEvent(of: .value, with: { (snapshot) in
-                    
-                    if let dictionary = snapshot.value as? [String: AnyObject]
+                    for number in 1...studentsCount
                     {
-                        let studentsShow = dictionary["StudentName\(studentsCount)"] as? String
-                        self.studentName.append(studentsShow!)
+                        let studentsShow = dictionary["StudentName\(number)"] as! String
+                        self.studentName.append(studentsShow)
                         self.helpShowTableView.reloadData()
                     }
-                    
-                }, withCancel: nil)
             }
             
         }, withCancel: nil)
@@ -63,7 +60,7 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
     {
         let cell = helpShowTableView.dequeueReusableCell(withIdentifier: "HelpShowCell", for: indexPath)
         
-        let students = ("\(studentName.count). " + studentName[indexPath.row])
+        let students = (studentName[indexPath.row])
         
         cell.textLabel?.text = students
         
@@ -79,25 +76,30 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
             //loopAndUpdate(index: indexPath)
             
             studentName.remove(at: indexPath.row)
-            print(studentName[indexPath.row])
+            print([indexPath.row + 1])
             helpShowTableView.deleteRows(at: [indexPath], with: .automatic)
+            updateFire()
         }
     }
     
     
-    func loopAndUpdate(index : IndexPath)
+    func updateFire()
     {
-//        for number in 1...1
-//        {
-            ref.child("Users/\(self.uidTemp)/Teacher/Help Section").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("Users/\(uidTemp)/Teacher/Help Section").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject]
+            {
+                let studentsCount = (dictionary.count - 1)
 
-                let updateWithValues = ["StudentName1" : self.studentName[index.row]]
-//                self.studentName[index.row]
-                print(updateWithValues)
-                
-                
-            }, withCancel: nil)
-//        }
+                for number in 1...studentsCount
+                {
+                    let updateWithValues = ["StudentName\(number)" : self.studentName]
+//                    set(updateWithValues, forKey: "Users/\(self.uidTemp)/Teacher/Help Section")
+                    print(updateWithValues)
+                }
+            }
+            
+        }, withCancel: nil)
     }
     
 }
