@@ -93,8 +93,9 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
 
                 for number in 1...studentsCount
                 {
-                    let updateWithValues = ["StudentName\(number)" : self.studentName]
-//                    set(updateWithValues, forKey: "Users/\(self.uidTemp)/Teacher/Help Section")
+                    let updateWithValues = ["StudentName\(number)" : self.studentName[number-1]]
+                    let refPush = ref.child("Users/\(self.uidTemp)/Teacher/Help Section")
+                    refPush.updateChildValues(updateWithValues)
                     print(updateWithValues)
                 }
             }

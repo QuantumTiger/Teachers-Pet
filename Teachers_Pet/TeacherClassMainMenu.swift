@@ -32,7 +32,7 @@ class TeacherClassMainMenu: UIViewController, UITableViewDataSource, UITableView
 
     func grabData()
     {
-        ref.child("Users/\(uidTemp)/Teacher/Help Section").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("Users/\(uidTemp)/Teacher/ClassName\(self.classNumberFromPrevious)/Students Enrolled").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject]
             {
