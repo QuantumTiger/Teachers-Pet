@@ -19,6 +19,7 @@ target 'Teachers_Pet' do
 	pod 'DateToolsSwift'
 	pod 'VBFPopFlatButton'
 	pod 'ChainableAnimations', '~> 2.0'
+    pod 'MJRefresh'
 
 
 end
