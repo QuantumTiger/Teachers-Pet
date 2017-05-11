@@ -53,11 +53,11 @@ class ViewController: UIViewController
         if emailTextField.text == "" && passwordTextField.text == "" || emailTextField.text == "" || passwordTextField.text == ""
         {
             alertViewNilHandler("Error", "Please enter your email and password")
-        }
+                    }
 
         else
         {
-            self.alertUICreate()
+            
             
             FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 
@@ -67,6 +67,7 @@ class ViewController: UIViewController
                     //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
                     guard let uid = user?.uid else {return}
                     self.uidTemp = uid
+                    self.alertUICreate()
                 }
                     
                 //Problem with entering something into the email text gives an error
@@ -74,7 +75,7 @@ class ViewController: UIViewController
                 {
                     let alert = SCLAlertView()
                     alert.showError("Error", subTitle: (error?.localizedDescription)!)
-                    self.present(alert, animated: true, completion: nil)
+                   // self.present(alert, animated: true, completion: nil)
                 }
             }
         }
@@ -164,7 +165,7 @@ class ViewController: UIViewController
             self.alertUITeacher()
         }
         alert.showWait("Are you a...", subTitle: "")
-        present(alert, animated: true, completion: nil)
+        //present(alert, animated: true, completion: nil)
         
     }
     
@@ -218,56 +219,61 @@ class ViewController: UIViewController
         }
         
 
-        present(alert, animated: true, completion: nil)
+        alert.showWait("", subTitle: "")
         
     }
     
     func alertUITeacher()
     {
-//        //Sets up teacher, adds them to firebase
-//        let alert = UIAlertController(title: "Setup your Class", message: nil, preferredStyle: .alert)
-//        alert.addTextField
-//            { (field) in
-//                field.autocapitalizationType = .words
-//                field.placeholder = "Your Name"
-//        }
-//        alert.addTextField
-//            { (field) in
-//                field.autocapitalizationType = .words
-//                field.placeholder = "Name of Class"
-//        }
-//        
-//        //Gathers information and puts to firebase and also checks if anything in texts
-//        alert.addAction(UIAlertAction(title: "Done", style: .default, handler:
-//            {   _ in
-//                if (alert.textFields?[0].text)! == ""
-//                {
-//                    let alertController = UIAlertController(title: "Error", message: "Please Enter a Name", preferredStyle: .alert)
-//                    
-//                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: self.alertUITeacher)
-//                    alertController.addAction(defaultAction)
-//                    
-//                    self.present(alertController, animated: true, completion: nil)
-//                }
-//                else if (alert.textFields?[1].text)! == ""
-//                {
-//                    let alertController = UIAlertController(title: "Error", message: "Please Enter a Class Name", preferredStyle: .alert)
-//                    
-//                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: self.alertUITeacher)
-//                    alertController.addAction(defaultAction)
-//                    
-//                    self.present(alertController, animated: true, completion: nil)
-//                }
-//                
-//                else
-//                {
-//                    self.addUserToFirebase((alert.textFields?[0].text)!, (alert.textFields?[1].text)!, "Teacher")
-//                }
-//                
-//                
-//        }))
-//        present(alert, animated: true, completion: nil)
-    }
+        //Configures text fields for student after proccess is done it should go to student view controller
+        
+        let appearence = SCLAlertView.SCLAppearance()
+        
+        // Initialize SCLAlertView using custom Appearance
+        let alert = SCLAlertView(appearance: appearence)
+        
+        // Creat the subview
+        let subview = UIView(frame: CGRect(x: 0,y: 0,width: 216,height: 70))
+        let x = (subview.frame.width - 180) / 2
+        
+        
+        
+        let textFieldName = UITextField(frame: CGRect(x: x,y: 10,width: 180,height: 25))
+        textFieldName.layer.borderColor = UIColor.green.cgColor
+        textFieldName.layer.borderWidth = 1.5
+        textFieldName.layer.cornerRadius = 5
+        textFieldName.textAlignment = NSTextAlignment.center
+        textFieldName.autocapitalizationType = .words
+        textFieldName.placeholder = "Your Name"
+        subview.addSubview(textFieldName)
+        
+        let textFieldClassName = UITextField(frame: CGRect(x: x,y: textFieldName.frame.maxY + 10,width: 180,height: 25))
+        textFieldClassName.layer.borderWidth = 1.5
+        textFieldClassName.layer.cornerRadius = 5
+        textFieldClassName.layer.borderColor = UIColor.blue.cgColor
+        textFieldClassName.textAlignment = NSTextAlignment.center
+        textFieldClassName.autocapitalizationType = .words
+        textFieldClassName.placeholder = "Class Name"
+        subview.addSubview(textFieldClassName)
+        
+        alert.customSubview = subview
+        _ = alert.addButton("Login") {
+            print("Login")
+            if textFieldName.text == "" {
+                let alertError = SCLAlertView()
+                alertError.showError("Error", subTitle: "Please enter a name")
+                self.present(alertError, animated: true, completion: nil)
+            } else if textFieldClassName.text == "" {
+                let alertError = SCLAlertView()
+                alertError.showError("Error", subTitle: "Please Enter a Class Name")
+                self.present(alertError, animated: true, completion: nil)
+            } else {
+                self.addUserToFirebase(textFieldName.text!, textFieldClassName.text!, "Teacher")
+            }
+        }
+        
+        
+        alert.showWait("", subTitle: "")    }
     
     func goToController(storyboardName: String)
     {
@@ -297,9 +303,10 @@ class ViewController: UIViewController
             
             
             //Notifies teacher that class is created and can go to their view controller
-            let alert = UIAlertController(title: "Class Created", message: "Your class name is \(classNameOrCode).", preferredStyle: .alert)
-            alert.addAction(dismissAction)
-            present(alert, animated: true, completion: nil)
+            let alert = SCLAlertView()
+            alert.showSuccess("Class Created", subTitle: "Your class name is \(classNameOrCode)")
+            
+
         }
         else if studentORTeacher == "Student"
         {
@@ -328,15 +335,12 @@ class ViewController: UIViewController
                 
             }, withCancel: nil)
             
-            //                    let success = UIAlertController(title: "Class Activated!", message: "You Successfully Joined a class", preferredStyle: .alert)
-            //                    self.present(success, animated: true, completion: nil)
-            
         }
         else
         {
-            let failure = UIAlertController(title: "Invalid Class Code", message: nil, preferredStyle: .alert)
-            failure.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(failure, animated: true, completion: nil)
+            let failure = SCLAlertView()
+            failure.showWarning("Invalid Class Code", subTitle: "")
+            
         }
     
     }
@@ -345,7 +349,6 @@ class ViewController: UIViewController
     {
         let alert = SCLAlertView()
         alert.showError(title, subTitle: message)
-        present(alert, animated: true, completion: nil)
      
         
     }
