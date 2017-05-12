@@ -20,6 +20,7 @@ target 'Teachers_Pet' do
 	pod 'VBFPopFlatButton'
 	pod 'ChainableAnimations', '~> 2.0'
     pod 'MJRefresh'
+    pod 'EPCalendarPicker'
 
 
 end
