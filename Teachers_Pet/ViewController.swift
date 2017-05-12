@@ -185,7 +185,7 @@ class ViewController: UIViewController
         
         
         let textFieldName = UITextField(frame: CGRect(x: x,y: 10,width: 180,height: 25))
-        textFieldName.layer.borderColor = UIColor.green.cgColor
+        textFieldName.layer.borderColor = UIColor.blue.cgColor
         textFieldName.layer.borderWidth = 1.5
         textFieldName.layer.cornerRadius = 5
         textFieldName.textAlignment = NSTextAlignment.center
@@ -239,7 +239,7 @@ class ViewController: UIViewController
         
         
         let textFieldName = UITextField(frame: CGRect(x: x,y: 10,width: 180,height: 25))
-        textFieldName.layer.borderColor = UIColor.green.cgColor
+        textFieldName.layer.borderColor = UIColor.blue.cgColor
         textFieldName.layer.borderWidth = 1.5
         textFieldName.layer.cornerRadius = 5
         textFieldName.textAlignment = NSTextAlignment.center
@@ -257,8 +257,8 @@ class ViewController: UIViewController
         subview.addSubview(textFieldClassName)
         
         alert.customSubview = subview
-        _ = alert.addButton("Login") {
-            print("Login")
+        _ = alert.addButton("Sign Up") {
+            print("Sign Up")
             if textFieldName.text == "" {
                 let alertError = SCLAlertView()
                 alertError.showError("Error", subTitle: "Please enter a name")
