@@ -257,8 +257,8 @@ class ViewController: UIViewController
         subview.addSubview(textFieldClassName)
         
         alert.customSubview = subview
-        _ = alert.addButton("Login") {
-            print("Login")
+        _ = alert.addButton("Sign Up") {
+            print("Sign Up")
             if textFieldName.text == "" {
                 let alertError = SCLAlertView()
                 alertError.showError("Error", subTitle: "Please enter a name")
@@ -319,7 +319,7 @@ class ViewController: UIViewController
                 if let dictionary = snapshot.value as? [String: AnyObject]
                 {
                     let className = dictionary["Class Name"] as! String
-                    let codeNumber = dictionary["Code Number"] as! String
+                    let codeNumber = dictionary["CodeNumber"] as! String
                     let teacher = dictionary["Teacher"] as! String
                     let teacherID = dictionary["Teacher ID"] as! String
                     let uses = dictionary["Uses"] as? String
