@@ -4,6 +4,7 @@ PODS:
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - DateToolsSwift (2.0.3)
+  - EPCalendarPicker (1.0.9)
   - Firebase (3.11.1):
     - Firebase/Core (= 3.11.1)
   - Firebase/Auth (3.11.1):
@@ -59,6 +60,7 @@ DEPENDENCIES:
   - ChainableAnimations (~> 2.0)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - DateToolsSwift
+  - EPCalendarPicker
   - Firebase
   - Firebase/Auth
   - Firebase/Core
@@ -84,6 +86,7 @@ SPEC CHECKSUMS:
   ChainableAnimations: c4f5988b9dd226b766997aa4812a56ab77c8ad40
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DateToolsSwift: bf69bf9056d9e53c5c03f06e51f219b9b8b02f9e
+  EPCalendarPicker: f6d39acc73f6df2bd78e963ed7f59b6949df2eaa
   Firebase: 53b2343db1ebfa3eb16bdb4318b8bb65360b2220
   FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
   FirebaseAuth: b436e4ecebe068bf8e8c6e4e29de5756ffe7ee24
@@ -102,6 +105,6 @@ SPEC CHECKSUMS:
   SideMenu: eeff6b85456c5c6e14165655691d2033f6b24969
   VBFPopFlatButton: 39e48ab56277f3d056734a9b5ec5d0cc60d69778
 
-PODFILE CHECKSUM: c9513c9346b83b3e5e1a332a66429ef1ccd779e4
+PODFILE CHECKSUM: a84cd24d88933a079f7f5924e3a901115f828114
 
 COCOAPODS: 1.2.1

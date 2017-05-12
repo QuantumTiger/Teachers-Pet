@@ -185,7 +185,7 @@ class ViewController: UIViewController
         
         
         let textFieldName = UITextField(frame: CGRect(x: x,y: 10,width: 180,height: 25))
-        textFieldName.layer.borderColor = UIColor.green.cgColor
+        textFieldName.layer.borderColor = UIColor.blue.cgColor
         textFieldName.layer.borderWidth = 1.5
         textFieldName.layer.cornerRadius = 5
         textFieldName.textAlignment = NSTextAlignment.center
@@ -239,7 +239,7 @@ class ViewController: UIViewController
         
         
         let textFieldName = UITextField(frame: CGRect(x: x,y: 10,width: 180,height: 25))
-        textFieldName.layer.borderColor = UIColor.green.cgColor
+        textFieldName.layer.borderColor = UIColor.blue.cgColor
         textFieldName.layer.borderWidth = 1.5
         textFieldName.layer.cornerRadius = 5
         textFieldName.textAlignment = NSTextAlignment.center
@@ -319,7 +319,7 @@ class ViewController: UIViewController
                 if let dictionary = snapshot.value as? [String: AnyObject]
                 {
                     let className = dictionary["Class Name"] as! String
-                    let codeNumber = dictionary["CodeNumber"] as! String
+                    let codeNumber = dictionary["Code Number"] as! String
                     let teacher = dictionary["Teacher"] as! String
                     let teacherID = dictionary["Teacher ID"] as! String
                     let uses = dictionary["Uses"] as? String
