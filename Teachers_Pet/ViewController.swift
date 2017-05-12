@@ -287,11 +287,13 @@ class ViewController: UIViewController
     {
         //Add to firebase along with name and class name all that good stuff
         
+        let thatCode = randomCode
+        
         let values = ["Email": self.emailTextField.text, "Password" : self.passwordTextField.text]
-        let teacherCodeInfo = ["Class Name": classNameOrCode, "Teacher" : yourName, "Uses" : "20", "Teacher ID" : "\(self.uidTemp)", "CodeNumber" : 1] as [String : Any]
+        let teacherCodeInfo = ["Class Name": classNameOrCode, "Teacher" : yourName, "Uses" : "20", "Teacher ID" : "\(self.uidTemp)", "CodeNumber" : 1, "ClassCode" : thatCode] as [String : Any]
         let studentInfo = ["Student Name" : yourName, "Student ID" : "\(self.uidTemp)"]
         let teacherInfo = ["Teacher Name" : yourName, "Teacher ID" : "\(self.uidTemp)"]
-        let className = ["ClassName" : classNameOrCode]
+        let className = ["ClassName" : classNameOrCode, "ClassCode" : thatCode]
         
         if studentORTeacher == "Teacher"
         {
@@ -299,7 +301,7 @@ class ViewController: UIViewController
             set(teacherInfo, forKey: "Users/\(self.uidTemp)/Teacher/")
             set(className, forKey: "Users/\(self.uidTemp)/Teacher/ClassName1")
             set(values, forKey: "Users/\(self.uidTemp)/Teacher/Teacher Account/")
-            set(teacherCodeInfo, forKey: "Users/Class Codes/\(randomCode)")
+            set(teacherCodeInfo, forKey: "Users/Class Codes/\(thatCode)")
             
             
             //Notifies teacher that class is created and can go to their view controller
@@ -319,7 +321,7 @@ class ViewController: UIViewController
                 if let dictionary = snapshot.value as? [String: AnyObject]
                 {
                     let className = dictionary["Class Name"] as! String
-                    let codeNumber = dictionary["Code Number"] as! String
+                    let codeNumber = dictionary["CodeNumber"] as! Int
                     let teacher = dictionary["Teacher"] as! String
                     let teacherID = dictionary["Teacher ID"] as! String
                     let uses = dictionary["Uses"] as? String
