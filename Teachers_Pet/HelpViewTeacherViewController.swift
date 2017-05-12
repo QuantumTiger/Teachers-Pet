@@ -73,8 +73,6 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
         {
             print("Deleted")
             
-            //loopAndUpdate(index: indexPath)
-            
             studentName.remove(at: indexPath.row)
             print([indexPath.row + 1])
             helpShowTableView.deleteRows(at: [indexPath], with: .automatic)

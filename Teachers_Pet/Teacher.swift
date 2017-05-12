@@ -20,6 +20,7 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
     var onlineStatus = [String]()
     var classesTable = [String]()
     var numberTracker = 1
+    var codesFromClass = [String]()
     
     @IBOutlet weak var teacherTableView: UITableView!
 
@@ -49,10 +50,11 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
             if let dictionary = snapshot.value as? [String: AnyObject]
             {
                 self.numberTracker = (dictionary.count)
-                print(self.numberTracker - 2)
+                print(self.numberTracker - 3)
             }
             
         }, withCancel: nil)
+        
         
         loopGrab(loopStart: 1, loopEnd: 100)
 
@@ -66,8 +68,9 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
                 if let dictionary = snapshot.value as? [String: AnyObject]
                 {
                     let className = dictionary["ClassName"] as! String
+                    let codes = dictionary["ClassCode"] as! String
                     self.classesTable.append(className)
-                    
+                    self.codesFromClass.append(codes)
                     self.teacherTableView.reloadData()
                 }
             }, withCancel: nil)
@@ -90,32 +93,21 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
             {   _ in
                 if let className = alert.textFields?[0].text
                 {
-                    let classCreate = ["ClassName" : className]
-                    let teacherCodeInfo = ["Class Name": className, "Teacher" : self.teacherName, "Uses" : "20", "Teacher ID" : "\(self.uidTemp)", "CodeNumber" : (self.numberTracker - 2)] as [String : Any]
-                    //let studentEnrolled = ["StudentName" : self.studentName, "Student ID" : self.uidTemp]
+                    let thatCode = randomCode
                     
-                    //set(yourName, forKey: "Users/\(teacherID)/Teacher/ClassName1/Students Enrolled/StudentName1")
+                    let classCreate = ["ClassName" : className, "ClassCode" : thatCode]
+                    let teacherCodeInfo = ["Class Name": className, "Teacher" : self.teacherName, "Uses" : "20", "Teacher ID" : "\(self.uidTemp)", "CodeNumber" : (self.numberTracker - 3)] as [String : Any]
                     
-                    let myRefTeach = ref.child("Users/\(self.uidTemp)/Teacher/ClassName\(self.numberTracker - 2)")
+                    let myRefTeach = ref.child("Users/\(self.uidTemp)/Teacher/ClassName\(self.numberTracker - 3)")
                     myRefTeach.updateChildValues(classCreate)
-                    set(teacherCodeInfo, forKey: "Users/Class Codes/\(randomCode)")
+                    set(teacherCodeInfo, forKey: "Users/Class Codes/\(thatCode)")
                     
-                    self.loopGrab(loopStart: (self.numberTracker - 2), loopEnd: 100)
+                    self.loopGrab(loopStart: (self.numberTracker - 3), loopEnd: 100)
                     self.teacherTableView.reloadData()
-                    
-                            
-                    //set(classesDetail,  forKey: "Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName\(self.numberTracker)")
-                    //set(studentEnrolled, forKey: "Users/\(teacherID)/Teacher/Students Enrolled/\(self.uidTemp)")
-                            
-                    
-                    //                let success = UIAlertController(title: "Class Activated!", message: "You Successfully Joined a class", preferredStyle: .alert)
-                    //                success.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                    //                self.present(success, animated: true, completion: nil)
-                    
                 }
                 else
                 {
-                    let failure = UIAlertController(title: "Invalid Class Code", message: nil, preferredStyle: .alert)
+                    let failure = UIAlertController(title: "Failed", message: nil, preferredStyle: .alert)
                     failure.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self.present(failure, animated: true, completion: nil)
                 }
@@ -135,10 +127,10 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
         let cell = teacherTableView.dequeueReusableCell(withIdentifier: "Teacher", for: indexPath)
         
         let classes = classesTable[indexPath.row]
-        //let studentStatus = onlineStatus[indexPath.row]
+        let showTheCodes = codesFromClass[indexPath.row]
         
         cell.textLabel?.text = classes
-        cell.detailTextLabel?.text = ""
+        cell.detailTextLabel?.text = showTheCodes
         
         return cell
     }
