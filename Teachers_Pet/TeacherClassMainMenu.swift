@@ -19,6 +19,9 @@ class TeacherClassMainMenu: UIViewController, UITableViewDataSource, UITableView
     var uidTemp = String()
     var classNumberFromPrevious = String()
     var studentsInClass = [String]()
+    var codesFromClass = [String]()
+    
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     override func viewDidLoad()
     {
@@ -26,7 +29,7 @@ class TeacherClassMainMenu: UIViewController, UITableViewDataSource, UITableView
         let uid = FIRAuth.auth()?.currentUser?.uid
         uidTemp = uid!
         grabData()
-
+        
         navigationController?.isNavigationBarHidden = true
     }
 
@@ -55,6 +58,7 @@ class TeacherClassMainMenu: UIViewController, UITableViewDataSource, UITableView
             }
             
         }, withCancel: nil)
+    
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int

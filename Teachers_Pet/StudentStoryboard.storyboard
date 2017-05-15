@@ -302,10 +302,10 @@
             </objects>
             <point key="canvasLocation" x="3054" y="881"/>
         </scene>
-        <!--View Controller-->
+        <!--Calendar View Controller-->
         <scene sceneID="3cM-hL-9EW">
             <objects>
-                <viewController id="vg3-Yu-M60" sceneMemberID="viewController">
+                <viewController id="vg3-Yu-M60" customClass="CalendarViewController" customModule="Teachers_Pet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Vn-X2-KqU"/>
                         <viewControllerLayoutGuide type="bottom" id="1nh-qL-XU7"/>
@@ -327,13 +327,31 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVS-RL-dui">
+                                <rect key="frame" x="176" y="353" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Calendar"/>
+                                <connections>
+                                    <action selector="Calendar:" destination="vg3-Yu-M60" eventType="touchUpInside" id="OUa-CJ-oJJ"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQv-VY-JUP">
+                                <rect key="frame" x="0.0" y="64" width="414" height="269"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="txtViewDetail" destination="TQv-VY-JUP" id="IRJ-0b-e82"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8X-u1-OPh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3054" y="-453"/>
+            <point key="canvasLocation" x="3053.6231884057975" y="-453.26086956521743"/>
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="jW9-Vq-kew">
@@ -378,7 +396,7 @@
         <image name="menu-three-horizontal-lines-symbol (2)" width="10" height="10"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mko-1p-wgo"/>
         <segue reference="Vny-tE-OwN"/>
+        <segue reference="Wwz-Fa-4CQ"/>
     </inferredMetricsTieBreakers>
 </document>
