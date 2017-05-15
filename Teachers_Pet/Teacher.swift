@@ -19,7 +19,6 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
     var allStudents = [String]()
     var onlineStatus = [String]()
     var classesTable = [String]()
-    var numberTracker = 1
     var codesFromClass = [String]()
     
     @IBOutlet weak var teacherTableView: UITableView!
@@ -44,18 +43,7 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
             }
             
         }, withCancel: nil)
-        
-        ref.child("Users/\(uidTemp)/Teacher/").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let dictionary = snapshot.value as? [String: AnyObject]
-            {
-                self.numberTracker = (dictionary.count)
-                print(self.numberTracker - 3)
-            }
-            
-        }, withCancel: nil)
-        
-        
+
         loopGrab(loopStart: 1, loopEnd: 100)
 
     }
@@ -95,15 +83,24 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
                 {
                     let thatCode = randomCode
                     
-                    let classCreate = ["ClassName" : className, "ClassCode" : thatCode]
-                    let teacherCodeInfo = ["Class Name": className, "Teacher" : self.teacherName, "Uses" : "20", "Teacher ID" : "\(self.uidTemp)", "CodeNumber" : (self.numberTracker - 3)] as [String : Any]
-                    
-                    let myRefTeach = ref.child("Users/\(self.uidTemp)/Teacher/ClassName\(self.numberTracker - 3)")
-                    myRefTeach.updateChildValues(classCreate)
-                    set(teacherCodeInfo, forKey: "Users/Class Codes/\(thatCode)")
-                    
-                    self.loopGrab(loopStart: (self.numberTracker - 3), loopEnd: 100)
-                    self.teacherTableView.reloadData()
+                    ref.child("Users/\(self.uidTemp)/Teacher/").observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        if let dictionary = snapshot.value as? [String: AnyObject]
+                        {
+                            let numberTracker = (dictionary.count - 3)
+                            
+                            let classCreate = ["ClassName" : className, "ClassCode" : thatCode]
+                            let teacherCodeInfo = ["Class Name": className, "Teacher" : self.teacherName, "Uses" : "20", "Teacher ID" : "\(self.uidTemp)", "CodeNumber" : (numberTracker)] as [String : Any]
+                            
+                            let myRefTeach = ref.child("Users/\(self.uidTemp)/Teacher/ClassName\(numberTracker)")
+                            myRefTeach.updateChildValues(classCreate)
+                            set(teacherCodeInfo, forKey: "Users/Class Codes/\(thatCode)")
+                            
+                            self.loopGrab(loopStart: (numberTracker), loopEnd: 100)
+                            self.teacherTableView.reloadData()
+                        }
+                        
+                    }, withCancel: nil)
                 }
                 else
                 {
