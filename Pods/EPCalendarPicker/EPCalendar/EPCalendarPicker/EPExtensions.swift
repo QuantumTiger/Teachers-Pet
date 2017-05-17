@@ -80,24 +80,7 @@ extension Date {
         dateComponent.day = days
         return (calendar as NSCalendar).date(byAdding: dateComponent, to: self, options: NSCalendar.Options.matchNextTime)!
     }
-    
-    func hour() -> Int {
-        let calendar = Calendar.current
-        let dateComponent = (calendar as NSCalendar).components(.hour, from: self)
-        return dateComponent.hour!
-    }
-    
-    func second() -> Int {
-        let calendar = Calendar.current
-        let dateComponent = (calendar as NSCalendar).components(.second, from: self)
-        return dateComponent.second!
-    }
-    
-    func minute() -> Int {
-        let calendar = Calendar.current
-        let dateComponent = (calendar as NSCalendar).components(.minute, from: self)
-        return dateComponent.minute!
-    }
+
     
     func day() -> Int {
         let calendar = Calendar.current
@@ -129,11 +112,6 @@ extension Date {
         return days.length
     }
     
-    func dateByIgnoringTime() -> Date {
-        let calendar = Calendar.current
-        let dateComponent = (calendar as NSCalendar).components([.year, .month, .day ], from: self)
-        return calendar.date(from: dateComponent)!
-    }
     
     func monthNameFull() -> String {
         let dateFormatter = DateFormatter()

@@ -142,8 +142,8 @@ open class EPCalendarPicker: UICollectionViewController {
         //Layout creation
         let layout = UICollectionViewFlowLayout()
         //layout.sectionHeadersPinToVisibleBounds = true  // If you want make a floating header enable this property(Avaialble after iOS9)
-        layout.minimumInteritemSpacing = 1
-        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 2
+        layout.minimumLineSpacing = 2
         layout.headerReferenceSize = EPDefaults.headerSize
         if let _ = selectedDates  {
             self.arrSelectedDates.append(contentsOf: selectedDates!)
