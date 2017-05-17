@@ -13,6 +13,7 @@
 		3F20E1BD1EC6028400D11E39 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20E1BC1EC6028400D11E39 /* CalendarViewController.swift */; };
 		3F96FE401EC0C8F80017BD75 /* HelpViewTeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96FE3F1EC0C8F80017BD75 /* HelpViewTeacherViewController.swift */; };
 		3FB7729D1EBA1D42008CC392 /* HelpButtonStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7729C1EBA1D42008CC392 /* HelpButtonStudent.swift */; };
+		3FCBDAC11EC9F3E300676D57 /* TeacherCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCBDAC01EC9F3E300676D57 /* TeacherCalendar.swift */; };
 		3FD0866E1E8419E3006B6D79 /* TeacherStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FD0866D1E8419E3006B6D79 /* TeacherStoryboard.storyboard */; };
 		3FD086701E841A0A006B6D79 /* StudentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FD0866F1E841A0A006B6D79 /* StudentStoryboard.storyboard */; };
 		3FE49C1B1E9AD6C1008887F6 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE49C1A1E9AD6C1008887F6 /* Teacher.swift */; };
@@ -52,6 +53,7 @@
 		3F20E1BC1EC6028400D11E39 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		3F96FE3F1EC0C8F80017BD75 /* HelpViewTeacherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewTeacherViewController.swift; sourceTree = "<group>"; };
 		3FB7729C1EBA1D42008CC392 /* HelpButtonStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpButtonStudent.swift; sourceTree = "<group>"; };
+		3FCBDAC01EC9F3E300676D57 /* TeacherCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherCalendar.swift; sourceTree = "<group>"; };
 		3FD0866D1E8419E3006B6D79 /* TeacherStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TeacherStoryboard.storyboard; sourceTree = "<group>"; };
 		3FD0866F1E841A0A006B6D79 /* StudentStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StudentStoryboard.storyboard; sourceTree = "<group>"; };
 		3FE49C1A1E9AD6C1008887F6 /* Teacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				3FF867191E82BE6700513A63 /* Main.storyboard */,
 				3FF867171E82BE6700513A63 /* ViewController.swift */,
 				3FD0866D1E8419E3006B6D79 /* TeacherStoryboard.storyboard */,
+				3FCBDAC01EC9F3E300676D57 /* TeacherCalendar.swift */,
 				3FE49C1A1E9AD6C1008887F6 /* Teacher.swift */,
 				3F02EAA21EB0E1C0000DC02D /* TeacherClassMainMenu.swift */,
 				3F96FE3F1EC0C8F80017BD75 /* HelpViewTeacherViewController.swift */,
@@ -374,6 +377,7 @@
 			files = (
 				3F20E1BD1EC6028400D11E39 /* CalendarViewController.swift in Sources */,
 				3F02EAA31EB0E1C0000DC02D /* TeacherClassMainMenu.swift in Sources */,
+				3FCBDAC11EC9F3E300676D57 /* TeacherCalendar.swift in Sources */,
 				3FE768731EA7AE7A008C0FDA /* Student.swift in Sources */,
 				3FE49C1B1E9AD6C1008887F6 /* Teacher.swift in Sources */,
 				3F02EAA51EB2387E000DC02D /* StudentClassMainMenu.swift in Sources */,
