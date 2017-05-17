@@ -21,7 +21,6 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
     var studentName = String()
     var teacherTable = [String]()
     var classesTable = [String]()
-    var numberTracker = 1
     var numberOfStudents = 1
     
     override func viewDidLoad()
@@ -38,8 +37,24 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
             
             if let dictionary = snapshot.value as? [String: AnyObject]
             {
-                self.numberTracker = (dictionary.count)
-                print(self.numberTracker)
+                let numberTracker = (dictionary.count)
+                print(numberTracker)
+                
+                for number in 1...numberTracker
+                {
+                    ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName\(number)").observeSingleEvent(of: .value, with: { (snapshot) in
+                        if let dictionary = snapshot.value as? [String: AnyObject]
+                        {
+                            let className = dictionary["ClassName"] as! String
+                            self.classesTable.append(className)
+                            let teacherName = dictionary["TeacherName"] as! String
+                            self.teacherTable.append(teacherName)
+                            
+                            self.studentTableView.reloadData()
+                        }
+                        
+                    }, withCancel: nil)
+                }
             }
             
         }, withCancel: nil)
@@ -55,23 +70,6 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
             
         }, withCancel: nil)
         
-        for number in 1...100
-        {
-            ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName\(number)").observeSingleEvent(of: .value, with: { (snapshot) in
-                if let dictionary = snapshot.value as? [String: AnyObject]
-                {
-                    let className = dictionary["ClassName"] as! String
-                    self.classesTable.append(className)
-                    let teacherName = dictionary["TeacherName"] as! String
-                    self.teacherTable.append(teacherName)
-                    
-                    self.studentTableView.reloadData()
-                }
-                
-                
-            }, withCancel: nil)
-        }
-        
     }
     
     @IBAction func plusButtonTapped(_ sender: Any)
@@ -84,7 +82,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     func lookAtTeacherWithCount(teacherID : String, codeNumber : Int)
     {
-        ref.child("Users/\(teacherID)/Teacher/ClassName\(codeNumber)").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("Users/\(teacherID)/Teacher/ClassName\(codeNumber)/Students Enrolled").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject]
             {
@@ -92,7 +90,6 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
                 self.numberOfStudents = dictionary.count
             }
             
-        
 //        let myRefTeach = ref.child("Users/\(teacherID)/Teacher/ClassName\(codeNumber)/Students Enrolled/")
 //        myRefTeach.updateChildValues(studentNameAdd)
             
@@ -127,11 +124,21 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
                             let classesDetail = ["ClassName" : className, "TeacherName" : teacher, "TeacherID" : teacherID]
                             let studentNameAdd = ["StudentName\(self.numberOfStudents + 1)" : self.studentName]
                             
-
-                            let myRef = ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName\(self.numberTracker + 1)")
-                            myRef.updateChildValues(classesDetail)
-                            let myRefTeach = ref.child("Users/\(teacherID)/Teacher/ClassName\(codeNumber)/Students Enrolled/")
-                            myRefTeach.updateChildValues(studentNameAdd)
+                            ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/").observeSingleEvent(of: .value, with: { (snapshot) in
+                                
+                                if let dictionary = snapshot.value as? [String: AnyObject]
+                                {
+                                    let numberTracker = (dictionary.count)
+                                    print(numberTracker)
+                                    
+                                    let myRef = ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName\(numberTracker + 1)")
+                                    myRef.updateChildValues(classesDetail)
+                                    let myRefTeach = ref.child("Users/\(teacherID)/Teacher/ClassName\(codeNumber)/Students Enrolled/")
+                                    myRefTeach.updateChildValues(studentNameAdd)
+                                    
+                                }
+                                
+                            }, withCancel: nil)
                         }
                         
                     }, withCancel: nil)
@@ -157,7 +164,6 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
     {
         return teacherTable.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
