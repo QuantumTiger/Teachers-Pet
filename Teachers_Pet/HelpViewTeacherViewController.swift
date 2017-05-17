@@ -87,7 +87,7 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
             
             if let dictionary = snapshot.value as? [String: AnyObject]
             {
-                let studentsCount = (dictionary.count - 1)
+                let studentsCount = (dictionary.count)
 
                 for number in 1...studentsCount
                 {
