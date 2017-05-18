@@ -27,8 +27,8 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
         let uid = FIRAuth.auth()?.currentUser?.uid
         uidTemp = uid!
+        print(uidTemp)
         grabData()
-//        print("This is the class Number \(classNumber)")
     }
     
     func grabData()
@@ -76,29 +76,8 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
             studentName.remove(at: indexPath.row)
             print([indexPath.row + 1])
             helpShowTableView.deleteRows(at: [indexPath], with: .automatic)
-            updateFire()
+            updateFire(fireBasePull: "Users/\(uidTemp)/Teacher/Help Section", array: studentName, fireBasePush: "Users/\(uidTemp)/Teacher/Help Section")
+            helpShowTableView.reloadData()
         }
     }
-    
-    
-    func updateFire()
-    {
-        ref.child("Users/\(uidTemp)/Teacher/Help Section").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let dictionary = snapshot.value as? [String: AnyObject]
-            {
-                let studentsCount = (dictionary.count - 1)
-
-                for number in 1...studentsCount
-                {
-                    let updateWithValues = ["StudentName\(number)" : self.studentName[number-1]]
-                    let refPush = ref.child("Users/\(self.uidTemp)/Teacher/Help Section")
-                    refPush.updateChildValues(updateWithValues)
-                    print(updateWithValues)
-                }
-            }
-            
-        }, withCancel: nil)
-    }
-    
 }

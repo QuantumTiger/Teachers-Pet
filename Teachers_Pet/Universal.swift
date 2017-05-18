@@ -62,6 +62,38 @@ var cancelAction: UIAlertAction
     return UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 }
 
+func updateFire(fireBasePull: String, array : Array<Any>,fireBasePush: String)
+{
+    ref.child(fireBasePull).observeSingleEvent(of: .value, with: { (snapshot) in
+        
+        if let dictionary = snapshot.value as? [String: AnyObject]
+        {
+            let studentsCount = (dictionary.count - 1)
+            let refPush = ref.child(fireBasePush)
+            
+            if studentsCount > 0
+            {
+                refPush.removeValue()
+                
+                for number in 1...studentsCount
+                {
+                    let updateWithValues = ["StudentName\(number)" : array[number - 1]]
+                    print(updateWithValues)
+                    refPush.updateChildValues(updateWithValues)
+                }
+            }
+                
+            else if studentsCount == 0
+            {
+                print("No one needs helps")
+                refPush.removeValue()
+            }
+        }
+        
+    }, withCancel: nil)
+}
+
+
 var dismissAction: UIAlertAction
 {
     return UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
