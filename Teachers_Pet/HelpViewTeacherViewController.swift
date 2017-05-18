@@ -39,12 +39,12 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
             {
                 let studentsCount = dictionary.count
                 
-                    for number in 1...studentsCount
-                    {
-                        let studentsShow = dictionary["StudentName\(number)"] as! String
-                        self.studentName.append(studentsShow)
-                        self.helpShowTableView.reloadData()
-                    }
+                for number in 1...studentsCount
+                {
+                    let studentsShow = dictionary["StudentName\(number)"] as! String
+                    self.studentName.append(studentsShow)
+                    self.helpShowTableView.reloadData()
+                }
             }
             
         }, withCancel: nil)
@@ -72,7 +72,6 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
         if editingStyle == .delete
         {
             print("Deleted")
-            
             studentName.remove(at: indexPath.row)
             print([indexPath.row + 1])
             helpShowTableView.deleteRows(at: [indexPath], with: .automatic)
