@@ -169,7 +169,7 @@ class ViewController: UIViewController
         alert.addButton("Teacher") { 
             self.alertUITeacher()
         }
-        alert.showWait("Are you a...", subTitle: "")
+        alert.showEdit("Are you a...", subTitle: "")
         
     }
     
@@ -254,7 +254,7 @@ class ViewController: UIViewController
         }
         
 
-        alert.showWait("", subTitle: "")
+        alert.showEdit("", subTitle: "")
         
     }
     
@@ -297,11 +297,9 @@ class ViewController: UIViewController
             if textFieldName.text == "" {
                 let alertError = SCLAlertView()
                 alertError.showError("Error", subTitle: "Please enter a name")
-                self.present(alertError, animated: true, completion: nil)
             } else if textFieldClassName.text == "" {
                 let alertError = SCLAlertView()
                 alertError.showError("Error", subTitle: "Please Enter a Class Name")
-                self.present(alertError, animated: true, completion: nil)
             } else {
                 self.addUserToFirebase(textFieldName.text!, textFieldClassName.text!, "Teacher")
             }
@@ -330,7 +328,7 @@ class ViewController: UIViewController
         }
         
         
-        alert.showWait("", subTitle: "")
+        alert.showEdit("", subTitle: "")
     }
     
     func goToController(storyboardName: String)
