@@ -21,6 +21,7 @@ class ViewController: UIViewController
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet var myView: UIView!
+    @IBOutlet weak var myAccountView: UIView!
 
     var isTeacher = true
     var numberTracker = 1
@@ -32,6 +33,10 @@ class ViewController: UIViewController
         // Do any additional setup after loading the view, typically from a nib.
         myView.backgroundColor = UIColor(gradientStyle: UIGradientStyle.topToBottom, withFrame: myView.frame, andColors: [FlatMint(),FlatMintDark(), FlatOrangeDark(), FlatOrange()])
         passwordTextField.isSecureTextEntry = true
+        loginButton.layer.cornerRadius = 5
+        loginButton.layer.masksToBounds = true
+        myAccountView.layer.cornerRadius = 5
+        myAccountView.layer.masksToBounds = true
     }
     
     
