@@ -213,42 +213,17 @@ class ViewController: UIViewController
         _ = alert.addButton("Sign up")
         {
             print("Signed up")
-            if textFieldName.text == ""
-            {
+            if textFieldName.text == "" {
                 let alertError = SCLAlertView()
                 alertError.showError("Error", subTitle: "Please enter a name")
                 self.present(alertError, animated: true, completion: nil)
-            }
-            else if
-                textFieldClassCode.text == ""
-            {
+            } else if textFieldClassCode.text == "" {
                 let alertError = SCLAlertView()
                 alertError.showError("Error", subTitle: "Please Enter a Class Code")
                 self.present(alertError, animated: true, completion: nil)
-            }
-            else
-            {
+            } else {
                 self.addUserToFirebase(textFieldName.text!, textFieldClassCode.text!, "Student")
             }
-//            FIRAuth.auth()?.createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
-//                
-//                if error == nil
-//                {
-//                    print("You have successfully signed up")
-//                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
-//                    guard let uid = user?.uid else {return}
-//                    self.uidTemp = uid
-//                    // self.alertUICreate()
-//                }
-//                    
-//                    //Problem with entering something into the email text gives an error
-//                else
-//                {
-//                    let alert = SCLAlertView()
-//                    alert.showError("Error", subTitle: (error?.localizedDescription)!)
-//                    // self.present(alert, animated: true, completion: nil)
-//                }
-//            }
             //GO TO CONTROLLER HERE
             self.goToController(storyboardName: "Student")
         }
@@ -303,26 +278,7 @@ class ViewController: UIViewController
             } else {
                 self.addUserToFirebase(textFieldName.text!, textFieldClassName.text!, "Teacher")
             }
-//            FIRAuth.auth()?.createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
-//                
-//                if error == nil
-//                {
-//                    print("You have successfully signed up")
-//                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
-//                    guard let uid = user?.uid else {return}
-//                    self.uidTemp = uid
-//                    // self.alertUICreate()
-//                }
-//                    
-//                    //Problem with entering something into the email text gives an error
-//                else
-//                {
-//                    let alert = SCLAlertView()
-//                    alert.showError("Error", subTitle: (error?.localizedDescription)!)
-//                    // self.present(alert, animated: true, completion: nil)
-//                }
-//                
-//            }
+
             //GO TO CONTROLLER HERE
             self.goToController(storyboardName: "Teacher")
         }
