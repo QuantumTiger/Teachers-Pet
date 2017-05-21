@@ -21,19 +21,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ymq-tk-fke">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cooltext240592172810348" translatesAutoresizingMaskIntoConstraints="NO" id="6oR-aG-BgD">
-                                        <rect key="frame" x="8" y="263" width="359" height="141"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.15101002156734467" green="0.56891876459121704" blue="0.43715286254882812" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cooltext240592172810348" translatesAutoresizingMaskIntoConstraints="NO" id="6oR-aG-BgD">
+                                <rect key="frame" x="20" y="267.5" width="335" height="132"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="6oR-aG-BgD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="GSH-Ir-IpE"/>
+                            <constraint firstItem="6oR-aG-BgD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Pve-ro-UKU"/>
+                            <constraint firstAttribute="trailing" secondItem="6oR-aG-BgD" secondAttribute="trailing" constant="20" id="eGN-8x-Fzk"/>
+                            <constraint firstItem="6oR-aG-BgD" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" id="gTw-CE-Qao"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
