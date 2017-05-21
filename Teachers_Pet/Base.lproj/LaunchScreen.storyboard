@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,20 +25,22 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cooltext240592172810348" translatesAutoresizingMaskIntoConstraints="NO" id="6oR-aG-BgD">
                                 <rect key="frame" x="20" y="267.5" width="335" height="132"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="© 2017 Kühl Duckz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1u-fS-WBv">
-                                <rect key="frame" x="29" y="622" width="316" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2017 Kühl Duckz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1u-fS-WBv">
+                                <rect key="frame" x="36" y="626" width="303" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="s1u-fS-WBv" secondAttribute="bottom" id="5HH-93-gDd"/>
                             <constraint firstItem="6oR-aG-BgD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="GSH-Ir-IpE"/>
                             <constraint firstItem="6oR-aG-BgD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Pve-ro-UKU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="s1u-fS-WBv" secondAttribute="trailing" constant="20" id="cgp-Rd-jwd"/>
                             <constraint firstAttribute="trailing" secondItem="6oR-aG-BgD" secondAttribute="trailing" constant="20" id="eGN-8x-Fzk"/>
                             <constraint firstItem="6oR-aG-BgD" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" id="gTw-CE-Qao"/>
+                            <constraint firstItem="s1u-fS-WBv" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="20" id="mKd-mP-eee"/>
                         </constraints>
                     </view>
                 </viewController>
