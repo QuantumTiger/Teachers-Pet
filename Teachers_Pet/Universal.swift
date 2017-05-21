@@ -62,14 +62,14 @@ var cancelAction: UIAlertAction
     return UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 }
 
-func updateFire(fireBasePull: String, array : Array<Any>,fireBasePush: String)
+func updateFire(fireBaseString: String, array : Array<Any>)
 {
-    ref.child(fireBasePull).observeSingleEvent(of: .value, with: { (snapshot) in
+    ref.child(fireBaseString).observeSingleEvent(of: .value, with: { (snapshot) in
         
         if let dictionary = snapshot.value as? [String: AnyObject]
         {
             let studentsCount = (dictionary.count - 1)
-            let refPush = ref.child(fireBasePush)
+            let refPush = ref.child(fireBaseString)
             
             if studentsCount > 0
             {
