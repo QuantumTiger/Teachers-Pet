@@ -129,8 +129,13 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h29-eX-778">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="beN-py-e9O">
+                                    <navigationItem title="Calendar" id="beN-py-e9O">
                                         <barButtonItem key="leftBarButtonItem" image="menu-three-horizontal-lines-symbol (2)" id="alg-US-G3f">
                                             <connections>
                                                 <segue destination="FKy-xI-hFV" kind="presentation" id="wGC-Hf-iUU"/>
@@ -202,8 +207,13 @@
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OcT-Cn-RlD">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="egw-QZ-mOQ">
+                                    <navigationItem title="Help!" id="egw-QZ-mOQ">
                                         <barButtonItem key="leftBarButtonItem" image="menu-three-horizontal-lines-symbol (2)" id="fG1-LO-kvh">
                                             <connections>
                                                 <segue destination="FKy-xI-hFV" kind="presentation" id="hBY-2o-mnM"/>
@@ -280,8 +290,13 @@
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9f7-MP-QWN">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="MUt-SY-eyz">
+                                    <navigationItem title="Attendance" id="MUt-SY-eyz">
                                         <barButtonItem key="leftBarButtonItem" image="menu-three-horizontal-lines-symbol (2)" id="xuu-tc-Yau">
                                             <connections>
                                                 <segue destination="FKy-xI-hFV" kind="presentation" id="b3m-aQ-Yv3"/>
@@ -377,11 +392,16 @@
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQU-j4-SWU">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <color key="backgroundColor" red="0.76089900732040405" green="0.25649610161781311" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="Nca-4O-o29"/>
                                 </constraints>
+                                <color key="barTintColor" red="0.76089900732040405" green="0.25649610161781311" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.98624199628829956" green="0.7796865701675415" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="UnM-Dz-cAn">
+                                    <navigationItem title="Classes" id="UnM-Dz-cAn">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qcP-cf-0lm"/>
                                     </navigationItem>
                                 </items>
@@ -455,11 +475,17 @@
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1K-k9-gZg">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="v1K-k9-gZg" secondAttribute="height" multiplier="207:22" id="c56-Dc-DON"/>
                                 </constraints>
+                                <color key="barTintColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.98624199628829956" green="0.7796865701675415" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textShadowColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="nVj-yb-uO5">
+                                    <navigationItem title="Students" id="nVj-yb-uO5">
                                         <barButtonItem key="leftBarButtonItem" image="menu-three-horizontal-lines-symbol (2)" id="Dx4-jJ-FYZ">
                                             <connections>
                                                 <segue destination="FKy-xI-hFV" kind="presentation" id="hIz-pU-Hfk"/>
@@ -513,6 +539,6 @@
         <image name="menu-three-horizontal-lines-symbol (2)" width="10" height="10"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="b3m-aQ-Yv3"/>
+        <segue reference="hBY-2o-mnM"/>
     </inferredMetricsTieBreakers>
 </document>
