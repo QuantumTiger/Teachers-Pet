@@ -62,27 +62,24 @@ class ViewController: UIViewController
 
         else
         {
-            self.alertUICreate()
-            
-//            FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-//                
-//                if error == nil
-//                {
-//                    print("You have successfully signed up")
-//                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
-//                    guard let uid = user?.uid else {return}
-//                    self.uidTemp = uid
-//                   // self.alertUICreate()
-//                }
-//                    
-//                //Problem with entering something into the email text gives an error
-//                else
-//                {
-//                    let alert = SCLAlertView()
-//                    alert.showError("Error", subTitle: (error?.localizedDescription)!)
-//                   // self.present(alert, animated: true, completion: nil)
-//                }
-//            }
+            FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+                
+                if error == nil
+                {
+                    print("You have successfully signed up")
+                    guard let uid = user?.uid else {return}
+                    self.uidTemp = uid
+                    self.alertUICreate()
+                }
+                    
+                //Problem with entering something into the email text gives an error
+                else
+                {
+                    let alert = SCLAlertView()
+                    alert.showError("Error", subTitle: (error?.localizedDescription)!)
+                   // self.present(alert, animated: true, completion: nil)
+                }
+            }
         }
     }
     
@@ -213,37 +210,22 @@ class ViewController: UIViewController
         subview.addSubview(textFieldClassCode)
         
         alert.customSubview = subview
-        _ = alert.addButton("Sign up") {
+        _ = alert.addButton("Sign up")
+        {
             print("Signed up")
             if textFieldName.text == "" {
                 let alertError = SCLAlertView()
                 alertError.showError("Error", subTitle: "Please enter a name")
+                self.present(alertError, animated: true, completion: nil)
             } else if textFieldClassCode.text == "" {
                 let alertError = SCLAlertView()
                 alertError.showError("Error", subTitle: "Please Enter a Class Code")
+                self.present(alertError, animated: true, completion: nil)
             } else {
                 self.addUserToFirebase(textFieldName.text!, textFieldClassCode.text!, "Student")
             }
-            FIRAuth.auth()?.createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
-                
-                if error == nil
-                {
-                    print("You have successfully signed up")
-                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
-                    guard let uid = user?.uid else {return}
-                    self.uidTemp = uid
-                    // self.alertUICreate()
-                }
-                    
-                    //Problem with entering something into the email text gives an error
-                else
-                {
-                    let alert = SCLAlertView()
-                    alert.showError("Error", subTitle: (error?.localizedDescription)!)
-                    // self.present(alert, animated: true, completion: nil)
-                }
-            }
             //GO TO CONTROLLER HERE
+            self.goToController(storyboardName: "Student")
         }
         
 
@@ -265,8 +247,6 @@ class ViewController: UIViewController
         // Creat the subview
         let subview = UIView(frame: CGRect(x: 0,y: 0,width: 216,height: 70))
         let x = (subview.frame.width - 180) / 2
-        
-        
         
         let textFieldName = UITextField(frame: CGRect(x: x,y: 10,width: 180,height: 25))
         textFieldName.layer.borderColor = UIColor.blue.cgColor
@@ -298,25 +278,9 @@ class ViewController: UIViewController
             } else {
                 self.addUserToFirebase(textFieldName.text!, textFieldClassName.text!, "Teacher")
             }
-            FIRAuth.auth()?.createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
-                
-                if error == nil
-                {
-                    print("You have successfully signed up")
-                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
-                    guard let uid = user?.uid else {return}
-                    self.uidTemp = uid
-                }
-                    
-                    //Problem with entering something into the email text gives an error
-                else
-                {
-                    let alert = SCLAlertView()
-                    alert.showError("Error", subTitle: (error?.localizedDescription)!)
-                }
-                
-            }
+
             //GO TO CONTROLLER HERE
+            self.goToController(storyboardName: "Teacher")
         }
         
         
@@ -399,7 +363,6 @@ class ViewController: UIViewController
         {
             let failure = SCLAlertView()
             failure.showWarning("Invalid Class Code", subTitle: "")
-            
         }
     
     }
