@@ -172,7 +172,7 @@ class ViewController: UIViewController
         alert.addButton("Teacher") { 
             self.alertUITeacher()
         }
-        alert.showWait("Are you a...", subTitle: "")
+        alert.showEdit("Are you a...", subTitle: "")
         
     }
     
@@ -218,11 +218,9 @@ class ViewController: UIViewController
             if textFieldName.text == "" {
                 let alertError = SCLAlertView()
                 alertError.showError("Error", subTitle: "Please enter a name")
-                self.present(alertError, animated: true, completion: nil)
             } else if textFieldClassCode.text == "" {
                 let alertError = SCLAlertView()
                 alertError.showError("Error", subTitle: "Please Enter a Class Code")
-                self.present(alertError, animated: true, completion: nil)
             } else {
                 self.addUserToFirebase(textFieldName.text!, textFieldClassCode.text!, "Student")
             }
@@ -249,7 +247,7 @@ class ViewController: UIViewController
         }
         
 
-        alert.showWait("", subTitle: "")
+        alert.showEdit("", subTitle: "")
         
     }
     
@@ -294,11 +292,9 @@ class ViewController: UIViewController
             if textFieldName.text == "" {
                 let alertError = SCLAlertView()
                 alertError.showError("Error", subTitle: "Please enter a name")
-                self.present(alertError, animated: true, completion: nil)
             } else if textFieldClassName.text == "" {
                 let alertError = SCLAlertView()
                 alertError.showError("Error", subTitle: "Please Enter a Class Name")
-                self.present(alertError, animated: true, completion: nil)
             } else {
                 self.addUserToFirebase(textFieldName.text!, textFieldClassName.text!, "Teacher")
             }
@@ -310,7 +306,6 @@ class ViewController: UIViewController
                     //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
                     guard let uid = user?.uid else {return}
                     self.uidTemp = uid
-                    // self.alertUICreate()
                 }
                     
                     //Problem with entering something into the email text gives an error
@@ -318,7 +313,6 @@ class ViewController: UIViewController
                 {
                     let alert = SCLAlertView()
                     alert.showError("Error", subTitle: (error?.localizedDescription)!)
-                    // self.present(alert, animated: true, completion: nil)
                 }
                 
             }
@@ -326,7 +320,7 @@ class ViewController: UIViewController
         }
         
         
-        alert.showWait("", subTitle: "")
+        alert.showEdit("", subTitle: "")
     }
     
     func goToController(storyboardName: String)
