@@ -62,14 +62,11 @@ class ViewController: UIViewController
 
         else
         {
-            
-            
             FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 
                 if error == nil
                 {
                     print("You have successfully signed up")
-                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
                     guard let uid = user?.uid else {return}
                     self.uidTemp = uid
                     self.alertUICreate()
@@ -160,8 +157,11 @@ class ViewController: UIViewController
     
     func alertUICreate()
     {
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
         //Creates the alert for first time users
-        let alert = SCLAlertView()
+        let alert = SCLAlertView(appearance: appearance)
         
         alert.addButton("Student") { 
             self.alertUIStudent()
@@ -169,8 +169,10 @@ class ViewController: UIViewController
         alert.addButton("Teacher") { 
             self.alertUITeacher()
         }
-        alert.showWait("Are you a...", subTitle: "")
-        //present(alert, animated: true, completion: nil)
+        alert.addButton("Cancel") { 
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.showEdit("Are you a...", subTitle: "")
         
     }
     
@@ -178,7 +180,10 @@ class ViewController: UIViewController
     {
         //Configures text fields for student after proccess is done it should go to student view controller
         
-        let appearence = SCLAlertView.SCLAppearance()
+        let appearence = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        
         
         // Initialize SCLAlertView using custom Appearance
         let alert = SCLAlertView(appearance: appearence)
@@ -208,7 +213,8 @@ class ViewController: UIViewController
         subview.addSubview(textFieldClassCode)
         
         alert.customSubview = subview
-        _ = alert.addButton("Sign up") {
+        _ = alert.addButton("Sign up")
+        {
             print("Signed up")
             if textFieldName.text == "" {
                 let alertError = SCLAlertView()
@@ -221,10 +227,16 @@ class ViewController: UIViewController
             } else {
                 self.addUserToFirebase(textFieldName.text!, textFieldClassCode.text!, "Student")
             }
+            //GO TO CONTROLLER HERE
+            self.goToController(storyboardName: "Student")
         }
+        _ = alert.addButton("Back", action: {
+            alert.dismiss(animated: true, completion: nil)
+            self.alertUICreate()
+        })
         
 
-        alert.showWait("", subTitle: "")
+        alert.showEdit("", subTitle: "")
         
     }
     
@@ -232,7 +244,9 @@ class ViewController: UIViewController
     {
         //Configures text fields for student after proccess is done it should go to student view controller
         
-        let appearence = SCLAlertView.SCLAppearance()
+        let appearence = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
         
         // Initialize SCLAlertView using custom Appearance
         let alert = SCLAlertView(appearance: appearence)
@@ -240,8 +254,6 @@ class ViewController: UIViewController
         // Creat the subview
         let subview = UIView(frame: CGRect(x: 0,y: 0,width: 216,height: 70))
         let x = (subview.frame.width - 180) / 2
-        
-        
         
         let textFieldName = UITextField(frame: CGRect(x: x,y: 10,width: 180,height: 25))
         textFieldName.layer.borderColor = UIColor.blue.cgColor
@@ -267,18 +279,24 @@ class ViewController: UIViewController
             if textFieldName.text == "" {
                 let alertError = SCLAlertView()
                 alertError.showError("Error", subTitle: "Please enter a name")
-                self.present(alertError, animated: true, completion: nil)
             } else if textFieldClassName.text == "" {
                 let alertError = SCLAlertView()
                 alertError.showError("Error", subTitle: "Please Enter a Class Name")
-                self.present(alertError, animated: true, completion: nil)
             } else {
                 self.addUserToFirebase(textFieldName.text!, textFieldClassName.text!, "Teacher")
             }
+
+            //GO TO CONTROLLER HERE
+            self.goToController(storyboardName: "Teacher")
         }
+        _ = alert.addButton("Back", action: {
+            alert.dismiss(animated: true, completion: nil)
+            self.alertUICreate()
+        })
         
         
-        alert.showWait("", subTitle: "")    }
+        alert.showEdit("", subTitle: "")
+    }
     
     func goToController(storyboardName: String)
     {
@@ -356,7 +374,6 @@ class ViewController: UIViewController
         {
             let failure = SCLAlertView()
             failure.showWarning("Invalid Class Code", subTitle: "")
-            
         }
     
     }
