@@ -62,27 +62,27 @@ class ViewController: UIViewController
 
         else
         {
+            self.alertUICreate()
             
-            
-            FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-                
-                if error == nil
-                {
-                    print("You have successfully signed up")
-                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
-                    guard let uid = user?.uid else {return}
-                    self.uidTemp = uid
-                    self.alertUICreate()
-                }
-                    
-                //Problem with entering something into the email text gives an error
-                else
-                {
-                    let alert = SCLAlertView()
-                    alert.showError("Error", subTitle: (error?.localizedDescription)!)
-                   // self.present(alert, animated: true, completion: nil)
-                }
-            }
+//            FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+//                
+//                if error == nil
+//                {
+//                    print("You have successfully signed up")
+//                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
+//                    guard let uid = user?.uid else {return}
+//                    self.uidTemp = uid
+//                   // self.alertUICreate()
+//                }
+//                    
+//                //Problem with entering something into the email text gives an error
+//                else
+//                {
+//                    let alert = SCLAlertView()
+//                    alert.showError("Error", subTitle: (error?.localizedDescription)!)
+//                   // self.present(alert, animated: true, completion: nil)
+//                }
+//            }
         }
     }
     
@@ -160,8 +160,11 @@ class ViewController: UIViewController
     
     func alertUICreate()
     {
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
         //Creates the alert for first time users
-        let alert = SCLAlertView()
+        let alert = SCLAlertView(appearance: appearance)
         
         alert.addButton("Student") { 
             self.alertUIStudent()
@@ -170,7 +173,6 @@ class ViewController: UIViewController
             self.alertUITeacher()
         }
         alert.showWait("Are you a...", subTitle: "")
-        //present(alert, animated: true, completion: nil)
         
     }
     
@@ -178,7 +180,10 @@ class ViewController: UIViewController
     {
         //Configures text fields for student after proccess is done it should go to student view controller
         
-        let appearence = SCLAlertView.SCLAppearance()
+        let appearence = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        
         
         // Initialize SCLAlertView using custom Appearance
         let alert = SCLAlertView(appearance: appearence)
@@ -221,6 +226,26 @@ class ViewController: UIViewController
             } else {
                 self.addUserToFirebase(textFieldName.text!, textFieldClassCode.text!, "Student")
             }
+            FIRAuth.auth()?.createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
+                
+                if error == nil
+                {
+                    print("You have successfully signed up")
+                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
+                    guard let uid = user?.uid else {return}
+                    self.uidTemp = uid
+                    // self.alertUICreate()
+                }
+                    
+                    //Problem with entering something into the email text gives an error
+                else
+                {
+                    let alert = SCLAlertView()
+                    alert.showError("Error", subTitle: (error?.localizedDescription)!)
+                    // self.present(alert, animated: true, completion: nil)
+                }
+            }
+            //GO TO CONTROLLER HERE
         }
         
 
@@ -232,7 +257,9 @@ class ViewController: UIViewController
     {
         //Configures text fields for student after proccess is done it should go to student view controller
         
-        let appearence = SCLAlertView.SCLAppearance()
+        let appearence = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
         
         // Initialize SCLAlertView using custom Appearance
         let alert = SCLAlertView(appearance: appearence)
@@ -275,10 +302,32 @@ class ViewController: UIViewController
             } else {
                 self.addUserToFirebase(textFieldName.text!, textFieldClassName.text!, "Teacher")
             }
+            FIRAuth.auth()?.createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
+                
+                if error == nil
+                {
+                    print("You have successfully signed up")
+                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
+                    guard let uid = user?.uid else {return}
+                    self.uidTemp = uid
+                    // self.alertUICreate()
+                }
+                    
+                    //Problem with entering something into the email text gives an error
+                else
+                {
+                    let alert = SCLAlertView()
+                    alert.showError("Error", subTitle: (error?.localizedDescription)!)
+                    // self.present(alert, animated: true, completion: nil)
+                }
+                
+            }
+            //GO TO CONTROLLER HERE
         }
         
         
-        alert.showWait("", subTitle: "")    }
+        alert.showWait("", subTitle: "")
+    }
     
     func goToController(storyboardName: String)
     {
