@@ -67,7 +67,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e01-7c-fRX">
-                                        <rect key="frame" x="115" y="164" width="99" height="37"/>
+                                        <rect key="frame" x="114" y="164" width="101" height="37"/>
                                         <color key="backgroundColor" red="0.97670525312423706" green="0.60546392202377319" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="119" id="kSe-5o-yRj"/>
@@ -101,16 +101,25 @@
                                     <constraint firstItem="X80-bD-kvb" firstAttribute="width" secondItem="KS4-pJ-DAw" secondAttribute="width" id="zcf-Eu-bL6"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2017 Kühl Duckz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9B9-tJ-M1R">
+                                <rect key="frame" x="50" y="695" width="314" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.15101002156734467" green="0.56891876459121704" blue="0.43715286254882812" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="CcH-59-LSQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="1YT-ib-hsJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CcH-59-LSQ" secondAttribute="trailing" constant="20" id="BpV-3Q-Jn5"/>
+                            <constraint firstAttribute="bottom" secondItem="9B9-tJ-M1R" secondAttribute="bottom" id="Kok-xq-XgP"/>
+                            <constraint firstItem="9B9-tJ-M1R" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="L9A-9G-oRw"/>
                             <constraint firstItem="rwb-xU-shM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="RMs-Ye-AXz"/>
                             <constraint firstItem="rwb-xU-shM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="SiA-Qr-qlE"/>
                             <constraint firstItem="CcH-59-LSQ" firstAttribute="top" secondItem="rwb-xU-shM" secondAttribute="bottom" constant="50" id="dh4-h5-O8w"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rwb-xU-shM" secondAttribute="trailing" constant="20" id="eoz-Cy-rf2"/>
                             <constraint firstItem="CcH-59-LSQ" firstAttribute="top" secondItem="rwb-xU-shM" secondAttribute="bottom" constant="50" id="tzo-q6-tIt"/>
+                            <constraint firstAttribute="trailing" secondItem="9B9-tJ-M1R" secondAttribute="trailing" constant="50" id="uYY-uJ-GpG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e0a-Qf-Elk"/>
