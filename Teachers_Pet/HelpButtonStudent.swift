@@ -45,7 +45,7 @@ class HelpButtonStudent: UIViewController
                         let teacherIDfromFireBase = dictionary["TeacherID"] as! String
                         self.teacherID = teacherIDfromFireBase
                         
-                        ref.child("Users/\(uidTemp)/Teacher/Help Section").observeSingleEvent(of: .value, with: { (snapshot) in
+                        ref.child("Users/\(self.uidTemp)/Teacher/Help Section").observeSingleEvent(of: .value, with: { (snapshot) in
                             
                             if let dictionary = snapshot.value as? [String: AnyObject]
                             {
