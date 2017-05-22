@@ -336,12 +336,12 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVS-RL-dui">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lI-II-YU2">
                                 <rect key="frame" x="176" y="353" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Calendar"/>
                                 <connections>
-                                    <action selector="Calendar:" destination="vg3-Yu-M60" eventType="touchUpInside" id="OUa-CJ-oJJ"/>
+                                    <action selector="calendar:" destination="vg3-Yu-M60" eventType="touchUpInside" id="j5q-vX-WMQ"/>
                                 </connections>
                             </button>
                         </subviews>
