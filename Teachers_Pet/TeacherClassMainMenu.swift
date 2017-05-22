@@ -76,5 +76,21 @@ class TeacherClassMainMenu: UIViewController, UITableViewDataSource, UITableView
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        var selectedCell : UITableViewCell = teacherDetailTableView.cellForRow(at: indexPath)!
+        selectedCell.contentView.backgroundColor = UIColor.green
+        
+//        if selectedCell.contentView.backgroundColor == UIColor.green
+//        {
+//            selectedCell.contentView.backgroundColor = UIColor.red
+//        }
+//        
+//        if selectedCell.contentView.backgroundColor == UIColor.red
+//        {
+//            selectedCell.contentView.backgroundColor = UIColor.yellow
+//        }
+    }
 
 }
