@@ -60,6 +60,52 @@ class TeacherClassMainMenu: UIViewController, UITableViewDataSource, UITableView
         }, withCancel: nil)
     
     }
+    @IBAction func addAssignment(_ sender: Any)
+    {
+        let actions = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actions.addAction(UIAlertAction(title: "Enter Assignment", style: .default, handler: assignmentCreation))
+        actions.addAction(cancelAction)
+        present(actions, animated: true, completion: nil)
+    }
+    
+    func assignmentCreation(_: UIAlertAction)
+    {
+        let alert = UIAlertController(title: "Enter Assignment", message: nil, preferredStyle: .alert)
+        alert.addTextField(configurationHandler: nil)
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler:
+            {   _ in
+                if let assignment = alert.textFields?[0].text
+                {
+                    let assignmentsForFirebase = ["Assignment1" : assignment]
+                    
+                    let mySet = ref.child("Users/\(self.uidTemp)/Teacher/Assignments")
+                    mySet.updateChildValues(assignmentsForFirebase)
+                    
+                    ref.child("Users/\(self.uidTemp)/Teacher/Assignments").observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                        if let dictionary = snapshot.value as? [String: AnyObject]
+                        {
+                            let number = dictionary.count + 1
+                            let assignmentsForFirebase = ["Assignment\(number)" : assignment]
+                            
+                            let mySet = ref.child("Users/\(self.uidTemp)/Teacher/Assignments")
+                            mySet.updateChildValues(assignmentsForFirebase)
+                        }
+                        
+                }, withCancel: nil)
+                    
+                }
+                else
+                {
+                    let failure = UIAlertController(title: "Failed", message: nil, preferredStyle: .alert)
+                    failure.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(failure, animated: true, completion: nil)
+                }
+        }))
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {

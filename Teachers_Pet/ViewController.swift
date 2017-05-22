@@ -382,8 +382,6 @@ class ViewController: UIViewController
     {
         let alert = SCLAlertView()
         alert.showError(title, subTitle: message)
-     
-        
     }
 
    
