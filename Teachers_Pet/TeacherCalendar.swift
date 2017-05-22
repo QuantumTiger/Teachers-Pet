@@ -11,7 +11,6 @@ import EPCalendarPicker
 
 class TeacherCalendar: UIViewController, EPCalendarPickerDelegate
 {
-    @IBOutlet weak var txtViewDetail: UITextView!
 
     override func viewDidLoad()
     {
@@ -35,18 +34,4 @@ class TeacherCalendar: UIViewController, EPCalendarPickerDelegate
         let navigationController = UINavigationController(rootViewController: calendarPicker)
         self.present(navigationController, animated: true, completion: nil)
     }
-    
-    func epCalendarPicker(_: EPCalendarPicker, didCancel error : NSError)
-    {
-        txtViewDetail.text = "Cancelled selection"
-    }
-    func epCalendarPicker(_: EPCalendarPicker, didSelectDate date : NSDate)
-    {
-        txtViewDetail.text = "Selected date: \n\(date)"
-    }
-    func epCalendarPicker(_: EPCalendarPicker, didSelectMultipleDate dates : NSDate)
-    {
-        txtViewDetail.text = "Selected dates: \n\(dates)"
-    }
-
 }

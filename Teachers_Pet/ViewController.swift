@@ -169,6 +169,9 @@ class ViewController: UIViewController
         alert.addButton("Teacher") { 
             self.alertUITeacher()
         }
+        alert.addButton("Cancel") { 
+            alert.dismiss(animated: true, completion: nil)
+        }
         alert.showEdit("Are you a...", subTitle: "")
         
     }
@@ -227,6 +230,10 @@ class ViewController: UIViewController
             //GO TO CONTROLLER HERE
             self.goToController(storyboardName: "Student")
         }
+        _ = alert.addButton("Back", action: {
+            alert.dismiss(animated: true, completion: nil)
+            self.alertUICreate()
+        })
         
 
         alert.showEdit("", subTitle: "")
@@ -282,6 +289,10 @@ class ViewController: UIViewController
             //GO TO CONTROLLER HERE
             self.goToController(storyboardName: "Teacher")
         }
+        _ = alert.addButton("Back", action: {
+            alert.dismiss(animated: true, completion: nil)
+            self.alertUICreate()
+        })
         
         
         alert.showEdit("", subTitle: "")
