@@ -18,7 +18,7 @@ struct EPDefaults  {
     static let dayDisabledTintColor = UIColor.lightGray
     static let weekdayTintColor = EPColors.EmeraldColor
     static let weekendTintColor = EPColors.PomegranateColor
-    static let dateSelectionColor = EPColors.PeterRiverColor
+    static let dateSelectionColor = EPColors.WhiteColor
     static let monthTitleColor = EPColors.PumpkinColor
     static let todayTintColor = EPColors.AmethystColor
     
@@ -35,6 +35,7 @@ struct EPColors{
     static let LightGrayColor = UIColor(red: (230/255), green: (230/255), blue: (230/255), alpha: 1.0)
     static let OrangeColor = UIColor(red: (233/255), green: (159/255), blue: (94/255), alpha: 1.0)
     static let LightGreenColor = UIColor(red: (158/255), green: (206/255), blue: (77/255), alpha: 1.0)
+    static let WhiteColor = UIColor(red: (0/255), green: (0/255), blue: (0/255), alpha: 1.0)
     
     static let EmeraldColor = UIColor(red: (46/255), green: (204/255), blue: (113/255), alpha: 1.0)
     static let SunflowerColor = UIColor(red: (241/255), green: (196/255), blue: (15/255), alpha: 1.0)

@@ -80,15 +80,8 @@ open class EPCalendarPicker: UICollectionViewController {
     func inititlizeBarButtons(){
         
 
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(EPCalendarPicker.onTouchCancelButton))
-        self.navigationItem.leftBarButtonItem = cancelButton
-
         var arrayBarButtons  = [UIBarButtonItem]()
         
-        if multiSelectEnabled {
-            let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(EPCalendarPicker.onTouchDoneButton))
-            arrayBarButtons.append(doneButton)
-        }
         
         if showsTodaysButton {
             let todayButton = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action:#selector(EPCalendarPicker.onTouchTodayButton))
@@ -320,18 +313,7 @@ open class EPCalendarPicker: UICollectionViewController {
     
     //MARK: Button Actions
     
-    internal func onTouchCancelButton() {
-       //TODO: Create a cancel delegate
-        calendarDelegate?.epCalendarPicker!(self, didCancel: NSError(domain: "EPCalendarPickerErrorDomain", code: 2, userInfo: [ NSLocalizedDescriptionKey: "User Canceled Selection"]))
-        dismiss(animated: true, completion: nil)
-        
-    }
-    
-    internal func onTouchDoneButton() {
-        //gathers all the selected dates and pass it to the delegate
-        calendarDelegate?.epCalendarPicker!(self, didSelectMultipleDate: arrSelectedDates)
-        dismiss(animated: true, completion: nil)
-    }
+
 
     internal func onTouchTodayButton() {
         scrollToToday()
