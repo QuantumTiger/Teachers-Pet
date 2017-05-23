@@ -21,6 +21,7 @@ target 'Teachers_Pet' do
 	pod 'ChainableAnimations', '~> 2.0'
     pod 'MJRefresh'
     pod 'EPCalendarPicker'
+    pod 'Refresher'
 
 
 end
