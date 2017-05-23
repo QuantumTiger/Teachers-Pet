@@ -79,4 +79,8 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
             helpShowTableView.reloadData()
         }
     }
+    
+    @IBAction func refreshTapped(_ sender: Any) {
+        helpShowTableView.reloadData()
+    }
 }
