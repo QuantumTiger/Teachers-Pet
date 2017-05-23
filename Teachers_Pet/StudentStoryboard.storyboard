@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qk6-kh-g5u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qk6-kh-g5u">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -132,6 +132,12 @@
                                             <color key="tintColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="ASL-Og-j6M" kind="presentation" id="TGL-1B-LuM"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ph0-v5-x51">
+                                            <color key="tintColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="refreshTapped:" destination="vfh-gb-cUk" id="Vb6-FI-L1C"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -274,9 +280,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="l5M-MG-rOO" kind="show" id="fBr-2P-cVz"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -291,51 +294,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nhv-6F-hYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3242.0289855072465" y="116.57608695652175"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="14E-1U-BdO">
-            <objects>
-                <viewController id="l5M-MG-rOO" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="H3X-kH-WFj"/>
-                        <viewControllerLayoutGuide type="bottom" id="ngS-pI-wCy"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vcW-HG-GH4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ydn-4X-G4e">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Ydn-4X-G4e" secondAttribute="height" multiplier="207:22" id="7J7-DO-uyY"/>
-                                </constraints>
-                                <color key="barTintColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Assignments" id="dlZ-qd-0h7">
-                                        <barButtonItem key="leftBarButtonItem" image="menu-three-horizontal-lines-symbol (2)" id="tJi-Bb-huM">
-                                            <color key="tintColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <segue destination="ASL-Og-j6M" kind="presentation" id="N3M-gK-lLa"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Ydn-4X-G4e" firstAttribute="top" secondItem="vcW-HG-GH4" secondAttribute="top" id="9lK-YF-1PR"/>
-                            <constraint firstItem="Ydn-4X-G4e" firstAttribute="leading" secondItem="vcW-HG-GH4" secondAttribute="leading" id="Ihf-CR-jGG"/>
-                            <constraint firstAttribute="trailing" secondItem="Ydn-4X-G4e" secondAttribute="trailing" id="MFV-oH-7bV"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ied-hF-jVZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3961" y="893"/>
         </scene>
         <!--Help Button Student-->
         <scene sceneID="kKr-yW-gbC">
