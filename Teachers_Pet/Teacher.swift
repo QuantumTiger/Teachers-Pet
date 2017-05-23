@@ -70,6 +70,7 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
     {
         let actions = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         actions.addAction(UIAlertAction(title: "Create a New Class", style: .default, handler: classCreation))
+        actions.addAction(UIAlertAction(title: "Refresh", style: .default, handler: nil))
         actions.addAction(cancelAction)
         present(actions, animated: true, completion: nil)
     }
@@ -89,6 +90,7 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
                         if let dictionary = snapshot.value as? [String: AnyObject]
                         {
                             let numberTracker = (dictionary.count - 3)
+                            
                             
                             let classCreate = ["ClassName" : className, "ClassCode" : thatCode]
                             let teacherCodeInfo = ["Class Name": className, "Teacher" : self.teacherName, "Uses" : "20", "Teacher ID" : "\(self.uidTemp)", "CodeNumber" : (numberTracker)] as [String : Any]
