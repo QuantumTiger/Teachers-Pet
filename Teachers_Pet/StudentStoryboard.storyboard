@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qk6-kh-g5u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qk6-kh-g5u">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -73,6 +73,9 @@
                                     <navigationItem title="Title" id="fQb-7s-3be">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FgP-DL-DRd">
                                             <color key="tintColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="plusButtonTapped:" destination="N8S-Rr-9f7" id="uOB-lf-a7K"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -472,7 +475,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="calendar" width="528" height="528"/>
+        <image name="calendar" width="426" height="426"/>
         <image name="helpbutton" width="66" height="66"/>
         <image name="menu-three-horizontal-lines-symbol (2)" width="10" height="10"/>
     </resources>

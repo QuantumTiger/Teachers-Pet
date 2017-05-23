@@ -135,7 +135,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
                                     let numberTracker = (dictionary.count)
                                     
                                     let classesDetail = ["ClassName" : className, "TeacherName" : teacher, "TeacherID" : teacherID, "ClassNumber" : "ClassName\(numberTracker + 1)"]
-                                    let studentNameAdd = ["StudentName\(self.numberOfStudents + 1)" : self.studentName]
+                                    let studentNameAdd = ["StudentName\(self.numberOfStudents)" : self.studentName]
                                     
                                     let myRef = ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName\(numberTracker + 1)")
                                     myRef.updateChildValues(classesDetail)
