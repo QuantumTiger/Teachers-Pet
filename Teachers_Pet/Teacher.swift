@@ -142,5 +142,28 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
         
         navigationController?.pushViewController(teacherClassMenu, animated: true)
     }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let cell = teacherTableView.dequeueReusableCell(withIdentifier: "Teacher", for: indexPath)
+        let presentAction = UITableViewRowAction(style: .default, title: "Present", handler:
+        {(UITableViewRowAction, IndexPath) -> Void in
+            cell.backgroundColor = FlatGreen()
+            self.teacherTableView.reloadData()
+        })
+        let tardyAction = UITableViewRowAction(style: .default, title: "Tardy", handler:
+        {(UITableViewRowAction, IndexPath) -> Void in
+            cell.backgroundColor = FlatYellow()
+            self.teacherTableView.reloadData()
+        })
+        let absentAction = UITableViewRowAction(style: .default, title: "Absent", handler:
+        {(UITableViewRowAction, IndexPath) -> Void in
+            cell.backgroundColor = FlatRed()
+            self.teacherTableView.reloadData()
+        })
+        presentAction.backgroundColor = FlatGreen()
+        tardyAction.backgroundColor = FlatYellow()
+        absentAction.backgroundColor = FlatRed()
+        
+        return [presentAction, tardyAction, absentAction]
+    }
 
 }
