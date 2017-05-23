@@ -49,9 +49,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="vfh-gb-cUk" kind="show" id="84o-k2-wGu"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -62,6 +59,10 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RRn-LB-zfc">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Title" id="fQb-7s-3be">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FgP-DL-DRd"/>
@@ -73,6 +74,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="zwU-aA-kTG">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="46b-jK-LRh">
+                            <color key="tintColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="plusButtonTapped:" destination="N8S-Rr-9f7" id="0Ea-w6-wP5"/>
                             </connections>
@@ -89,7 +91,7 @@
         <!--Student Class Main Menu-->
         <scene sceneID="Udi-Ra-aVV">
             <objects>
-                <viewController id="vfh-gb-cUk" customClass="StudentClassMainMenu" customModule="Teachers_Pet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="assignmentTable" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vfh-gb-cUk" customClass="StudentClassMainMenu" customModule="Teachers_Pet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oqf-lU-SVa"/>
                         <viewControllerLayoutGuide type="bottom" id="2vx-wd-kmV"/>
@@ -101,9 +103,14 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GZu-33-NrE">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Classes" id="wEk-bS-nM2">
                                         <barButtonItem key="leftBarButtonItem" image="menu-three-horizontal-lines-symbol (2)" id="3B3-FA-zNW">
+                                            <color key="tintColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="ASL-Og-j6M" kind="presentation" id="TGL-1B-LuM"/>
                                             </connections>
@@ -111,9 +118,40 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="assignmentTable" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fL2-oP-Zka">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="assignmentsCell" textLabel="41i-xM-tVU" style="IBUITableViewCellStyleDefault" id="WPk-8F-UAO">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WPk-8F-UAO" id="iyY-65-cvv">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="41i-xM-tVU">
+                                                    <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="vfh-gb-cUk" id="QcM-Yj-gaQ"/>
+                                    <outlet property="delegate" destination="vfh-gb-cUk" id="hcr-Vy-vit"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="assignmentsTableView" destination="fL2-oP-Zka" id="KdB-m4-Rgh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QL0-Ig-AwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,8 +175,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Calender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g1c-ZT-dMI">
-                                                    <rect key="frame" x="20" y="0.0" width="379" height="43.666666666666664"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g1c-ZT-dMI">
+                                                    <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -158,7 +196,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Help!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="utN-G1-tzU">
-                                                    <rect key="frame" x="20" y="0.0" width="379" height="43.666666666666664"/>
+                                                    <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -178,7 +216,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Classes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8V8-ge-0Ie">
-                                                    <rect key="frame" x="20" y="0.0" width="379" height="43.666666666666664"/>
+                                                    <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -188,6 +226,26 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="qk6-kh-g5u" kind="show" id="Vny-tE-OwN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="jdg-Fc-7mL" style="IBUITableViewCellStyleDefault" id="q44-eP-JRK">
+                                        <rect key="frame" x="0.0" y="132" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q44-eP-JRK" id="w1U-Aa-c1a">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Assignments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jdg-Fc-7mL">
+                                                    <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="l5M-MG-rOO" kind="show" id="fBr-2P-cVz"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -203,6 +261,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nhv-6F-hYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3242.0289855072465" y="116.57608695652175"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="14E-1U-BdO">
+            <objects>
+                <viewController id="l5M-MG-rOO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H3X-kH-WFj"/>
+                        <viewControllerLayoutGuide type="bottom" id="ngS-pI-wCy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vcW-HG-GH4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ydn-4X-G4e">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Assignments" id="dlZ-qd-0h7">
+                                        <barButtonItem key="leftBarButtonItem" image="menu-three-horizontal-lines-symbol (2)" id="tJi-Bb-huM">
+                                            <color key="tintColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <segue destination="ASL-Og-j6M" kind="presentation" id="N3M-gK-lLa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ied-hF-jVZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3961" y="893"/>
         </scene>
         <!--Help Button Student-->
         <scene sceneID="kKr-yW-gbC">
@@ -223,14 +319,20 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="izf-7Q-Hz7">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Help!" id="Kbh-Mw-WFY">
                                         <barButtonItem key="leftBarButtonItem" image="menu-three-horizontal-lines-symbol (2)" id="oO8-Xu-RRb">
+                                            <color key="tintColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="ASL-Og-j6M" kind="presentation" id="rYT-Wd-Blq"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="L1F-MU-8Pz">
+                                            <color key="tintColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="cancelButton:" destination="Odo-dE-ffy" id="I5Z-D3-Tg7"/>
                                             </connections>
@@ -270,12 +372,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lI-II-YU2">
+                                <rect key="frame" x="145" y="353" width="125" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="Calendar">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="calendar:" destination="vg3-Yu-M60" eventType="touchUpInside" id="j5q-vX-WMQ"/>
+                                </connections>
+                            </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VaC-j4-5Bb">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.76089900730000004" green="0.25649610160000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Calendar" id="ysy-KW-u5W">
                                         <barButtonItem key="leftBarButtonItem" image="menu-three-horizontal-lines-symbol (2)" id="gKU-je-vIz">
+                                            <color key="tintColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="ASL-Og-j6M" kind="presentation" id="Wwz-Fa-4CQ"/>
                                             </connections>
@@ -283,21 +401,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVS-RL-dui">
-                                <rect key="frame" x="176" y="353" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Calendar"/>
-                                <connections>
-                                    <action selector="Calendar:" destination="vg3-Yu-M60" eventType="touchUpInside" id="OUa-CJ-oJJ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8X-u1-OPh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3960.8695652173915" y="-453.26086956521743"/>
+            <point key="canvasLocation" x="3961" y="-428"/>
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="jW9-Vq-kew">
@@ -342,6 +452,6 @@
         <image name="menu-three-horizontal-lines-symbol (2)" width="10" height="10"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Wwz-Fa-4CQ"/>
+        <segue reference="TGL-1B-LuM"/>
     </inferredMetricsTieBreakers>
 </document>
