@@ -10,10 +10,12 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import ChameleonFramework
 
 class HelpButtonStudent: UIViewController
 {
     
+    @IBOutlet var myView: UIView!
     @IBOutlet var helpButton: UIImageView!
     var uidTemp = String()
     var studentName = String()
@@ -28,6 +30,7 @@ class HelpButtonStudent: UIViewController
         let uid = FIRAuth.auth()?.currentUser?.uid
         uidTemp = uid!
         grabData()
+        myView.backgroundColor = UIColor(gradientStyle: UIGradientStyle.radial, withFrame: myView.frame, andColors: [FlatOrange(),FlatOrangeDark(), FlatLimeDark(), FlatLime()])
     }
 
     func grabData()

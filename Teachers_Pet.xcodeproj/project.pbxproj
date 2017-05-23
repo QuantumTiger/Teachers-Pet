@@ -11,6 +11,8 @@
 		3F02EAA51EB2387E000DC02D /* StudentClassMainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02EAA41EB2387E000DC02D /* StudentClassMainMenu.swift */; };
 		3F0C83991E83628D00610A07 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F0C83981E83628D00610A07 /* GoogleService-Info.plist */; };
 		3F20E1BD1EC6028400D11E39 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20E1BC1EC6028400D11E39 /* CalendarViewController.swift */; };
+		3F27537A1ED3D8F200A487E7 /* StudentSideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2753791ED3D8F200A487E7 /* StudentSideTableViewController.swift */; };
+		3F27537C1ED3D91900A487E7 /* TeacherSideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F27537B1ED3D91900A487E7 /* TeacherSideTableViewController.swift */; };
 		3F3EFACB1ECC96AF004B9743 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EFACA1ECC96AF004B9743 /* TableViewController.swift */; };
 		3F96FE401EC0C8F80017BD75 /* HelpViewTeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96FE3F1EC0C8F80017BD75 /* HelpViewTeacherViewController.swift */; };
 		3FB7729D1EBA1D42008CC392 /* HelpButtonStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7729C1EBA1D42008CC392 /* HelpButtonStudent.swift */; };
@@ -52,6 +54,8 @@
 		3F02EAA41EB2387E000DC02D /* StudentClassMainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentClassMainMenu.swift; sourceTree = "<group>"; };
 		3F0C83981E83628D00610A07 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F20E1BC1EC6028400D11E39 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		3F2753791ED3D8F200A487E7 /* StudentSideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentSideTableViewController.swift; path = ../StudentSideTableViewController.swift; sourceTree = "<group>"; };
+		3F27537B1ED3D91900A487E7 /* TeacherSideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherSideTableViewController.swift; sourceTree = "<group>"; };
 		3F3EFACA1ECC96AF004B9743 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		3F96FE3F1EC0C8F80017BD75 /* HelpViewTeacherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewTeacherViewController.swift; sourceTree = "<group>"; };
 		3FB7729C1EBA1D42008CC392 /* HelpButtonStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpButtonStudent.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				3FD0866D1E8419E3006B6D79 /* TeacherStoryboard.storyboard */,
+				3F27537B1ED3D91900A487E7 /* TeacherSideTableViewController.swift */,
 				3FCBDAC01EC9F3E300676D57 /* TeacherCalendar.swift */,
 				3FE49C1A1E9AD6C1008887F6 /* Teacher.swift */,
 				3F02EAA21EB0E1C0000DC02D /* TeacherClassMainMenu.swift */,
@@ -140,6 +145,7 @@
 		3F2753771ED2596B00A487E7 /* Student Menu */ = {
 			isa = PBXGroup;
 			children = (
+				3F2753791ED3D8F200A487E7 /* StudentSideTableViewController.swift */,
 				3FD0866F1E841A0A006B6D79 /* StudentStoryboard.storyboard */,
 				3F20E1BC1EC6028400D11E39 /* CalendarViewController.swift */,
 				3FE768721EA7AE7A008C0FDA /* Student.swift */,
@@ -412,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F20E1BD1EC6028400D11E39 /* CalendarViewController.swift in Sources */,
+				3F27537C1ED3D91900A487E7 /* TeacherSideTableViewController.swift in Sources */,
 				3F02EAA31EB0E1C0000DC02D /* TeacherClassMainMenu.swift in Sources */,
 				3FCBDAC11EC9F3E300676D57 /* TeacherCalendar.swift in Sources */,
 				3FE768731EA7AE7A008C0FDA /* Student.swift in Sources */,
@@ -421,6 +428,7 @@
 				3F3EFACB1ECC96AF004B9743 /* TableViewController.swift in Sources */,
 				3F96FE401EC0C8F80017BD75 /* HelpViewTeacherViewController.swift in Sources */,
 				3FF867181E82BE6700513A63 /* ViewController.swift in Sources */,
+				3F27537A1ED3D8F200A487E7 /* StudentSideTableViewController.swift in Sources */,
 				3FF867161E82BE6700513A63 /* AppDelegate.swift in Sources */,
 				3FE762231E987D720041648C /* Universal.swift in Sources */,
 			);

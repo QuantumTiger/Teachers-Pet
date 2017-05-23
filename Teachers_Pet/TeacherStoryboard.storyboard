@@ -13,7 +13,7 @@
         <!--Root View Controller-->
         <scene sceneID="YTJ-sR-okC">
             <objects>
-                <tableViewController id="PJR-gE-waC" customClass="T" sceneMemberID="viewController">
+                <tableViewController id="PJR-gE-waC" customClass="TeacherSideTableViewController" customModule="Teachers_Pet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aXw-dL-eEY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -173,6 +173,9 @@
                             <constraint firstItem="XTV-Cj-0KK" firstAttribute="top" secondItem="h29-eX-778" secondAttribute="bottom" constant="81" id="Zlo-9s-1uL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="myView" destination="bIQ-gG-9KQ" id="gJE-wR-4XE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fp2-rg-VtH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
