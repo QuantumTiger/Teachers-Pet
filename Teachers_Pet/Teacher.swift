@@ -74,6 +74,7 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
            self.teacherTableView.reloadData()
         }))
         actions.addAction(cancelAction)
+        
         present(actions, animated: true, completion: nil)
     }
 
