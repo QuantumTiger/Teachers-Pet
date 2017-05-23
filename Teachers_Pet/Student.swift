@@ -180,7 +180,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let studentClassMainMenu = storyboard?.instantiateViewController(withIdentifier: "") as! StudentClassMainMenu
+        let studentClassMainMenu = storyboard?.instantiateViewController(withIdentifier: "assignmentTable") as! StudentClassMainMenu
         print("\(indexPath.item + 1)")
         studentClassMainMenu.classNumberSelected = "\(indexPath.item + 1)"
         
