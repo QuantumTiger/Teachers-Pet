@@ -38,7 +38,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="SAY-PI-p8w" kind="show" id="iIO-p0-RCg"/>
+                                            <segue destination="SAY-PI-p8w" kind="presentation" id="iIO-p0-RCg"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="rtg-Be-s85" rowHeight="40" style="IBUITableViewCellStyleDefault" id="Z8h-aC-CsE">
