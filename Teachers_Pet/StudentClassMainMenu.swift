@@ -28,6 +28,7 @@ class StudentClassMainMenu: UIViewController, UITableViewDataSource, UITableView
         navigationController?.isNavigationBarHidden = true
     }
     
+    //grabs the assignment name the teacher types in the table view from firebase
     func grabData()
     {
         ref.child("Users/\(teacherID)/Teacher/\(className)/Assignments/").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -49,11 +50,13 @@ class StudentClassMainMenu: UIViewController, UITableViewDataSource, UITableView
     }
     
     
+    //number of assignments in the table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return assignmentsArray.count
     }
     
+    //shows up the asssignment name in the table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = assignmentsTableView.dequeueReusableCell(withIdentifier: "assignmentsCell", for: indexPath)
