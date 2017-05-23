@@ -178,4 +178,13 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let studentClassMainMenu = storyboard?.instantiateViewController(withIdentifier: "") as! StudentClassMainMenu
+        print("\(indexPath.item + 1)")
+        studentClassMainMenu.classNumberSelected = "\(indexPath.item + 1)"
+        
+        navigationController?.pushViewController(studentClassMainMenu, animated: true)
+    }
+    
 }

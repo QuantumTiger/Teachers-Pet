@@ -12,6 +12,9 @@ class StudentClassMainMenu: UIViewController, UITableViewDataSource, UITableView
     
     var uidTemp = String()
     var assignmentsArray = [String]()
+    var classNumberSelected = String()
+    var teacherID = String()
+    var teacherName = String()
     
     override func viewDidLoad()
     {
@@ -24,7 +27,21 @@ class StudentClassMainMenu: UIViewController, UITableViewDataSource, UITableView
     
     func grabData()
     {
-        
+        ref.child("Users/\(teacherID)/ClassName\(classNumberSelected)/Classes Enrolled/").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject]
+            {
+                let numberTracker = (dictionary.count)
+                
+                for number in 1...numberTracker
+                {
+                    let assignmentsShow = dictionary["Assignment\(number)"] as! String
+                    self.assignmentsArray.append(assignmentsShow)
+                    self.assignmentsTableView.reloadData()
+                }
+            }
+            
+        }, withCancel: nil)
     }
     
     
