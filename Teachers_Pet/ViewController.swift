@@ -42,6 +42,7 @@ class ViewController: UIViewController
         //sublayers clipped to main layer
         loginButton.layer.masksToBounds = true
         myAccountView.layer.masksToBounds = true
+        
     }
     
     
@@ -369,7 +370,7 @@ class ViewController: UIViewController
                     let className = dictionary["Class Name"] as! String
                     let codeNumber = dictionary["CodeNumber"] as! Int
                     let teacher = dictionary["Teacher"] as! String
-                    let teacherID = dictionary["Teacher ID"] as! String
+                    let teacherID = dictionary["TeacherID"] as! String
                     let uses = dictionary["Uses"] as? String
                 
                     ref.child("Users/\(teacherID)/Teacher/ClassName\(codeNumber)/Students Enrolled").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -378,7 +379,8 @@ class ViewController: UIViewController
                         {
                             let studentCount = (dictionary.count + 1)
                             
-                            let classesDetail = ["TeacherName" : teacher, "ClassName" : className, "TeacherID" : teacherID]
+                            let classesDetail = ["TeacherName" : teacher, "ClassName" : className, "TeacherID" : teacherID, "ClassNumber" : "ClassName1"]
+
                             //let studentEnrolled = ["Student Name" : yourName, "Student ID" : self.uidTemp]
                             
                             set(classesDetail, forKey: "Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName1")

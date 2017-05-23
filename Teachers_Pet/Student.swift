@@ -31,6 +31,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
     {
         super.viewDidLoad()
         let uid = FIRAuth.auth()?.currentUser?.uid
+        studentTableView.reloadData()
         uidTemp = uid!
         grabData()
     }
@@ -125,8 +126,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
                             
                             self.lookAtTeacherWithCount(teacherID: teacherID, codeNumber: codeNumber)
 
-                            let classesDetail = ["ClassName" : className, "TeacherName" : teacher, "TeacherID" : teacherID]
-                            let studentNameAdd = ["StudentName\(self.numberOfStudents + 1)" : self.studentName]
+                            
                             
                             ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/").observeSingleEvent(of: .value, with: { (snapshot) in
                                 
@@ -134,8 +134,12 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
                                 {
                                     let numberTracker = (dictionary.count)
                                     
+                                    let classesDetail = ["ClassName" : className, "TeacherName" : teacher, "TeacherID" : teacherID, "ClassNumber" : "ClassName\(numberTracker + 1)"]
+                                    let studentNameAdd = ["StudentName\(self.numberOfStudents + 1)" : self.studentName]
+                                    
                                     let myRef = ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName\(numberTracker + 1)")
                                     myRef.updateChildValues(classesDetail)
+                                    
                                     let myRefTeach = ref.child("Users/\(teacherID)/Teacher/ClassName\(codeNumber)/Students Enrolled/")
                                     myRefTeach.updateChildValues(studentNameAdd)
                                     
