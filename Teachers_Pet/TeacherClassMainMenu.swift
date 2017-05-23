@@ -124,10 +124,6 @@ class TeacherClassMainMenu: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        
-    }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
         let cell = teacherDetailTableView.dequeueReusableCell(withIdentifier: "assignmentsCell", for: indexPath)

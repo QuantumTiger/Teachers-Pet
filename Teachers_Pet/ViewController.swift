@@ -23,33 +23,39 @@ class ViewController: UIViewController
     @IBOutlet var myView: UIView!
     @IBOutlet weak var myAccountView: UIView!
 
-    var isTeacher = true
     var numberTracker = 1
     var uidTemp = String()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //Changes the background of the view
         myView.backgroundColor = UIColor(gradientStyle: UIGradientStyle.topToBottom, withFrame: myView.frame, andColors: [FlatMint(),FlatMintDark(), FlatOrangeDark(), FlatOrange()])
+        
+        //secures the password and creates it in dots
         passwordTextField.isSecureTextEntry = true
-        loginButton.layer.cornerRadius = 5
-        loginButton.layer.masksToBounds = true
+        
+        //rounds the corners of the view
         myAccountView.layer.cornerRadius = 5
+        loginButton.layer.cornerRadius = 5
+        
+        //sublayers clipped to main layer
+        loginButton.layer.masksToBounds = true
         myAccountView.layer.masksToBounds = true
     }
     
     
     @IBAction func signUpTapped(_ sender: Any)
     {
-        createUser()
         //Should prompt user to see if they are student or teacher
+        createUser()
+        
     }
 
     @IBAction func loginTapped(_ sender: Any)
     {
-        loginUser()
         //Goes to the proper view controller depending on the user ID
+        loginUser()
     }
     
     func createUser()
@@ -57,46 +63,56 @@ class ViewController: UIViewController
         //Checks whether if textfields are empty or not
         if emailTextField.text == "" && passwordTextField.text == "" || emailTextField.text == "" || passwordTextField.text == ""
         {
+            //Pops up alertview if there are errors
             alertViewNilHandler("Error", "Please enter your email and password")
                     }
 
         else
         {
+            //creates a user through firebase
             FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 
+                //if there is no error the signup was successful
                 if error == nil
                 {
                     print("You have successfully signed up")
+                    
+                    //gets the user ID
                     guard let uid = user?.uid else {return}
                     self.uidTemp = uid
+                    
+                    //Creates the user
                     self.alertUICreate()
                 }
                     
                 //Problem with entering something into the email text gives an error
                 else
                 {
+                    //problem with creating user alertview shows up with error
                     let alert = SCLAlertView()
                     alert.showError("Error", subTitle: (error?.localizedDescription)!)
-                   // self.present(alert, animated: true, completion: nil)
                 }
             }
         }
     }
     
+    //checks if the user is logged in
     func checkIfUserIsLoggedIn()
     {
+        //checks if the person is out of he app
         if FIRAuth.auth()?.currentUser?.uid == nil
         {
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
         }
         else
         {
+            //gets id of person logging in
             let uid = FIRAuth.auth()?.currentUser?.uid
             
+            //checks for the users
             FIRDatabase.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
-                //print(snapshot)
                 
-                
+                //checks for the values in the firebase database
                 if let dictionary = snapshot.value as? [String: AnyObject]
                 {
                     let userCheck = dictionary["StudentORTeacher"] as? String
@@ -116,10 +132,12 @@ class ViewController: UIViewController
         }
     }
     
+    //logs user out of firebase
     func handleLogout()
     {
         do
         {
+            //signs out user
             try FIRAuth.auth()?.signOut()
         }
         catch let logoutError
@@ -127,6 +145,7 @@ class ViewController: UIViewController
             print(logoutError)
         }
     }
+    
     
     func loginUser()
     {
@@ -188,12 +207,12 @@ class ViewController: UIViewController
         // Initialize SCLAlertView using custom Appearance
         let alert = SCLAlertView(appearance: appearence)
         
-        // Creat the subview
+        // Creates the subview
         let subview = UIView(frame: CGRect(x: 0,y: 0,width: 216,height: 70))
         let x = (subview.frame.width - 180) / 2
 
         
-        
+        //sets properties for the textfield
         let textFieldName = UITextField(frame: CGRect(x: x,y: 10,width: 180,height: 25))
         textFieldName.layer.borderColor = UIColor.blue.cgColor
         textFieldName.layer.borderWidth = 1.5
@@ -212,6 +231,7 @@ class ViewController: UIViewController
         textFieldClassCode.placeholder = "Class Code"
         subview.addSubview(textFieldClassCode)
         
+        //adds actions to button
         alert.customSubview = subview
         _ = alert.addButton("Sign up")
         {
@@ -255,6 +275,7 @@ class ViewController: UIViewController
         let subview = UIView(frame: CGRect(x: 0,y: 0,width: 216,height: 70))
         let x = (subview.frame.width - 180) / 2
         
+        //sets properties for the textfields
         let textFieldName = UITextField(frame: CGRect(x: x,y: 10,width: 180,height: 25))
         textFieldName.layer.borderColor = UIColor.blue.cgColor
         textFieldName.layer.borderWidth = 1.5
@@ -273,6 +294,7 @@ class ViewController: UIViewController
         textFieldClassName.placeholder = "Class Name"
         subview.addSubview(textFieldClassName)
         
+        //sets the actions for the buttons
         alert.customSubview = subview
         _ = alert.addButton("Sign Up") {
             print("Sign Up")
@@ -300,6 +322,7 @@ class ViewController: UIViewController
     
     func goToController(storyboardName: String)
     {
+        //swtiches storyboards
         let storyboard = UIStoryboard(name: storyboardName + "Storyboard", bundle: nil)
         let controller = storyboard.instantiateInitialViewController()
         self.present(controller!, animated: true, completion: nil)
@@ -380,6 +403,7 @@ class ViewController: UIViewController
 
     func alertViewNilHandler(_ title: String, _ message: String)
     {
+        //error
         let alert = SCLAlertView()
         alert.showError(title, subTitle: message)
     }
