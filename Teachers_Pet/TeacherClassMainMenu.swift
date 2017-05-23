@@ -77,20 +77,18 @@ class TeacherClassMainMenu: UIViewController, UITableViewDataSource, UITableView
             {   _ in
                 if let assignment = alert.textFields?[0].text
                 {
-                    let assignmentsForFirebase = ["Assignment1" : assignment]
-                    
-                    let mySet = ref.child("Users/\(self.uidTemp)/Teacher/ClassNumber\(self.classNumberFromPrevious)/Assignments")
-                    mySet.updateChildValues(assignmentsForFirebase)
-                    
-                    ref.child("Users/\(self.uidTemp)/Teacher/ClassNumber\(self.classNumberFromPrevious)/Assignments").observeSingleEvent(of: .value, with: { (snapshot) in
+                    ref.child("Users/\(self.uidTemp)/Teacher/ClassName\(self.classNumberFromPrevious)/Assignments").observeSingleEvent(of: .value, with: { (snapshot) in
                     
                         if let dictionary = snapshot.value as? [String: AnyObject]
                         {
                             let number = dictionary.count + 1
                             let assignmentsForFirebase = ["Assignment\(number)" : assignment]
                             
-                            let mySet = ref.child("Users/\(self.uidTemp)/Teacher/Assignments")
-                            mySet.updateChildValues(assignmentsForFirebase)
+                            let mySetAll = ref.child("Users/\(self.uidTemp)/Teacher/Assignments")
+                            mySetAll.updateChildValues(assignmentsForFirebase)
+                            
+                            let mySetStudent = ref.child("Users/\(self.uidTemp)/Teacher/ClassName\(self.classNumberFromPrevious)/Assignments")
+                            mySetStudent.updateChildValues(assignmentsForFirebase)
                         }
                         
                 }, withCancel: nil)

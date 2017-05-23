@@ -21,6 +21,10 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
     var studentName = String()
     var teacherTable = [String]()
     var classesTable = [String]()
+    
+    var teacherID = String()
+    var classNumbersTracker = String()
+    
     var numberOfStudents = 1
     
     override func viewDidLoad()
@@ -129,7 +133,6 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
                                 if let dictionary = snapshot.value as? [String: AnyObject]
                                 {
                                     let numberTracker = (dictionary.count)
-                                    print(numberTracker)
                                     
                                     let myRef = ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName\(numberTracker + 1)")
                                     myRef.updateChildValues(classesDetail)
@@ -182,9 +185,23 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
     {
         let studentClassMainMenu = storyboard?.instantiateViewController(withIdentifier: "assignmentTable") as! StudentClassMainMenu
         print("\(indexPath.item + 1)")
-        studentClassMainMenu.classNumberSelected = "\(indexPath.item + 1)"
         
-        navigationController?.pushViewController(studentClassMainMenu, animated: true)
+        ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName\(indexPath.item + 1)").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject]
+            {
+                let teacherIDFirebase = dictionary["TeacherID"] as! String
+                self.teacherID = teacherIDFirebase
+                let classNumberFirebase = dictionary["ClassNumber"] as! String
+                self.classNumbersTracker = classNumberFirebase
+                
+                studentClassMainMenu.className = self.classNumbersTracker
+                studentClassMainMenu.teacherID = self.teacherID
+                
+                self.navigationController?.pushViewController(studentClassMainMenu, animated: true)
+            }
+            
+        }, withCancel: nil)
     }
     
 }

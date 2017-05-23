@@ -81,9 +81,12 @@ class HelpButtonStudent: UIViewController
         }, withCancel: nil)
     }
     
+    //tap gesture for help button
     @IBAction func helpButtonPressed(_ sender: UITapGestureRecognizer)
     {
+        //help button image in the image view
         self.helpButton.image = UIImage(named: "helpbuttonPressed")
+        
         
         let help = ["StudentName\(classCounter)" : studentName]
         
@@ -91,6 +94,7 @@ class HelpButtonStudent: UIViewController
         myRefPush.updateChildValues(help)
     }
     
+    //when cancel button is pressed the help button animates back  
     @IBAction func cancelButton(_ sender: Any)
     {
         print("Nothing Should Happen, too Much work for firebase code")

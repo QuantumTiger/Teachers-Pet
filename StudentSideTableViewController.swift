@@ -10,9 +10,11 @@ import UIKit
 import SideMenu
 import ChameleonFramework
 
-class StudentSideTableViewController: UITableViewController {
+class StudentSideTableViewController: UITableViewController
+{
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         tableView.backgroundColor = UIColor(gradientStyle: UIGradientStyle.leftToRight, withFrame: tableView.frame, andColors: [FlatGrayDark(), FlatGray(), FlatTeal(), FlatTealDark()])
     }
