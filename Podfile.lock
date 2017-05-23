@@ -50,6 +50,7 @@ PODS:
   - JTAppleCalendar (7.0.2)
   - MJRefresh (3.1.12)
   - pop (1.0.9)
+  - Refresher (0.6.1)
   - SCLAlertView (0.7.0)
   - SIAlertView (1.3)
   - SideMenu (2.2.0)
@@ -68,6 +69,7 @@ DEPENDENCIES:
   - JTAppleCalendar (~> 7.0)
   - MJRefresh
   - pop (~> 1.0)
+  - Refresher
   - SCLAlertView
   - SIAlertView
   - SideMenu
@@ -100,11 +102,12 @@ SPEC CHECKSUMS:
   JTAppleCalendar: c14685634064ef67a68209548ff3443208af48a3
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  Refresher: 7c6f09ef3428aa921cb477611fb26bf29a9e5492
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SIAlertView: 20c794b55eaf44d888773ea51647cf8907723919
   SideMenu: eeff6b85456c5c6e14165655691d2033f6b24969
   VBFPopFlatButton: 39e48ab56277f3d056734a9b5ec5d0cc60d69778
 
-PODFILE CHECKSUM: a84cd24d88933a079f7f5924e3a901115f828114
+PODFILE CHECKSUM: 29867b7fd7ec0d80122785f9bd86f6fe19c012a1
 
 COCOAPODS: 1.2.1

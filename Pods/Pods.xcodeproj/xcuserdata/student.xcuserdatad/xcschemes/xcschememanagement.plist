@@ -49,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Refresher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SCLAlertView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -82,7 +87,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>36F6C3DBBDF26C416C4039D941EB9A1A</key>
+		<key>19D863B363F1E898F87CAFCBA4A5245A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,7 +97,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5CF64A4397B603A896E4602B77336584</key>
+		<key>58602B63883B0DA30B8B4DE0C555675C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,22 +112,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>884A2B1F82C3381BDBE8FEAD72A7487F</key>
+		<key>8830C6442DEED3CD9842B1D02DB4D8C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>895327EE1CB1E229BA4E9000B452AE9C</key>
+		<key>9F1CE47C30943C59698A1F3903B010A4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8F053C87BA6C5164C05068A21287C7D9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B4553FC0560F1FA0D6DEB4156DB9AB43</key>
+		<key>A9180D108882E8E6A6D30FF352BDBCBF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,12 +137,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C11A0573592B58625C7066392A914AFF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E14A62900910444707A5504D25EC98DC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>E89CFD99B895BCC6E8EDC2F95A03500C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F1564681B8955E6A592E0935DF1552B7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
