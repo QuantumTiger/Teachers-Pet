@@ -12,7 +12,7 @@ class StudentClassMainMenu: UIViewController, UITableViewDataSource, UITableView
     
     var uidTemp = String()
     var assignmentsArray = [String]()
-    var classNumberSelected = String()
+    var className = String()
     var teacherID = String()
     var teacherName = String()
     
@@ -21,21 +21,25 @@ class StudentClassMainMenu: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         let uid = FIRAuth.auth()?.currentUser?.uid
         uidTemp = uid!
+        print(teacherID)
+        print(className)
+        grabData()
         
         navigationController?.isNavigationBarHidden = true
     }
     
     func grabData()
     {
-        ref.child("Users/\(teacherID)/ClassName\(classNumberSelected)/Assignments/").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("Users/\(teacherID)/Teacher/\(className)/Assignments/").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject]
             {
                 let numberTracker = (dictionary.count)
+                print(dictionary.count)
                 
                 for number in 1...numberTracker
                 {
-                    let assignmentsShow = dictionary["Assignment\(number)"] as! String
+                    let assignmentsShow = dictionary["Assignment1"] as! String
                     self.assignmentsArray.append(assignmentsShow)
                     self.assignmentsTableView.reloadData()
                 }
