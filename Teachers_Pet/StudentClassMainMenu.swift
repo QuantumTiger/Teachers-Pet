@@ -27,7 +27,7 @@ class StudentClassMainMenu: UIViewController, UITableViewDataSource, UITableView
     
     func grabData()
     {
-        ref.child("Users/\(teacherID)/ClassName\(classNumberSelected)/Classes Enrolled/").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("Users/\(teacherID)/ClassName\(classNumberSelected)/Assignments/").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject]
             {

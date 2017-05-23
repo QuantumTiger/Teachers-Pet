@@ -129,7 +129,6 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
                                 if let dictionary = snapshot.value as? [String: AnyObject]
                                 {
                                     let numberTracker = (dictionary.count)
-                                    print(numberTracker)
                                     
                                     let myRef = ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName\(numberTracker + 1)")
                                     myRef.updateChildValues(classesDetail)

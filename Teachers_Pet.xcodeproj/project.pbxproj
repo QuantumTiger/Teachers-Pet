@@ -148,8 +148,8 @@
 		3F2753771ED2596B00A487E7 /* Student Menu */ = {
 			isa = PBXGroup;
 			children = (
-				3F2753791ED3D8F200A487E7 /* StudentSideTableViewController.swift */,
 				3FD0866F1E841A0A006B6D79 /* StudentStoryboard.storyboard */,
+				3F2753791ED3D8F200A487E7 /* StudentSideTableViewController.swift */,
 				3F20E1BC1EC6028400D11E39 /* CalendarViewController.swift */,
 				3FE768721EA7AE7A008C0FDA /* Student.swift */,
 				3FB7729C1EBA1D42008CC392 /* HelpButtonStudent.swift */,
