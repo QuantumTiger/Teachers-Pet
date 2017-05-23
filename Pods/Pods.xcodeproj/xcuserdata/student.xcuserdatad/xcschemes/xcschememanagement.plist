@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ChainableAnimations.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>ChameleonFramework.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -34,11 +29,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>JTAppleCalendar.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -49,32 +39,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Refresher.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SCLAlertView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SIAlertView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SideMenu.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>VBFPopFlatButton.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -87,17 +57,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>19D863B363F1E898F87CAFCBA4A5245A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3C04F32E50948CFEA8F7D9CE9311E77A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>58602B63883B0DA30B8B4DE0C555675C</key>
+		<key>217C0BE4F2E28A2CD6BF71070A9442DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,22 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8830C6442DEED3CD9842B1D02DB4D8C4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9F1CE47C30943C59698A1F3903B010A4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A9180D108882E8E6A6D30FF352BDBCBF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BFED2E29E95E065400F8846E0231A970</key>
+		<key>A966EC87FF12793A5F459B03CE2A2478</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,7 +82,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C11A0573592B58625C7066392A914AFF</key>
+		<key>D0DFBB692F0ADB8A96087D2D1C4B5392</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -148,11 +93,6 @@
 			<true/>
 		</dict>
 		<key>E89CFD99B895BCC6E8EDC2F95A03500C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F1564681B8955E6A592E0935DF1552B7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

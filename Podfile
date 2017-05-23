@@ -12,16 +12,11 @@ target 'Teachers_Pet' do
 	pod ‘Firebase/Database’
   	pod ‘SideMenu’
 	pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
-  	pod 'JTAppleCalendar', '~> 7.0'
     	pod 'SCLAlertView'
-	pod 'pop', '~> 1.0'
-	pod 'SIAlertView'
 	pod 'DateToolsSwift'
-	pod 'VBFPopFlatButton'
-	pod 'ChainableAnimations', '~> 2.0'
     pod 'MJRefresh'
     pod 'EPCalendarPicker'
-    pod 'Refresher'
+    
 
 
 end
