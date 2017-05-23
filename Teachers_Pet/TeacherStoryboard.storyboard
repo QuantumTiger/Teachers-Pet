@@ -537,10 +537,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="calendar" width="528" height="528"/>
+        <image name="calendar" width="426" height="426"/>
         <image name="menu-three-horizontal-lines-symbol (2)" width="10" height="10"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hBY-2o-mnM"/>
+        <segue reference="gfe-T4-hyO"/>
     </inferredMetricsTieBreakers>
 </document>
