@@ -81,6 +81,6 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
     }
     
     @IBAction func refreshTapped(_ sender: Any) {
-        helpShowTableView.reloadData()
+        grabData()
     }
 }
