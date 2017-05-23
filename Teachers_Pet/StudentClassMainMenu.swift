@@ -68,7 +68,7 @@ class StudentClassMainMenu: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     @IBAction func refreshTapped(_ sender: Any) {
-        grabData()
+        assignmentsTableView.reloadData()
     }
     
     

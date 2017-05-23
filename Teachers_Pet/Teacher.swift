@@ -71,8 +71,7 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
         let actions = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         actions.addAction(UIAlertAction(title: "Create a New Class", style: .default, handler: classCreation))
         actions.addAction(UIAlertAction(title: "Refresh", style: .default, handler: { (action) in
-            self.grabData()
-           
+           self.teacherTableView.reloadData()
         }))
         actions.addAction(cancelAction)
         
