@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import ChameleonFramework
+import SCLAlertView
 
 class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
@@ -142,5 +143,6 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
         
         navigationController?.pushViewController(teacherClassMenu, animated: true)
     }
+
 
 }

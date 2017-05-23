@@ -1,3 +1,4 @@
+
 //
 //  CalendarViewController.swift
 //  Teachers_Pet
@@ -8,13 +9,16 @@
 
 import UIKit
 import EPCalendarPicker
+import ChameleonFramework
 
 class CalendarViewController: UIViewController, EPCalendarPickerDelegate
 {
+    @IBOutlet var myView: UIView!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        myView.backgroundColor = UIColor(gradientStyle: UIGradientStyle.topToBottom, withFrame: myView.frame, andColors: [FlatWhite(),FlatWhiteDark(), FlatRedDark(), FlatRed()])
     }
     
     

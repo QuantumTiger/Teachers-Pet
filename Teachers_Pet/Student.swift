@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import ChameleonFramework
-//jdfklast
+import SCLAlertView
 
 class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
@@ -176,6 +176,15 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
         cell.detailTextLabel?.text = teachers
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let studentClassMainMenu = storyboard?.instantiateViewController(withIdentifier: "assignmentTable") as! StudentClassMainMenu
+        print("\(indexPath.item + 1)")
+        studentClassMainMenu.classNumberSelected = "\(indexPath.item + 1)"
+        
+        navigationController?.pushViewController(studentClassMainMenu, animated: true)
     }
     
 }
