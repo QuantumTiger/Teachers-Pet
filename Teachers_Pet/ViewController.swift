@@ -404,6 +404,7 @@ class ViewController: UIViewController
     func alertViewNilHandler(_ title: String, _ message: String)
     {
         //error
+
         let alert = SCLAlertView()
         alert.showError(title, subTitle: message)
     }
