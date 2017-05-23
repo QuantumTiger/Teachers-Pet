@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import ChameleonFramework
+import SCLAlertView
 
 class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
