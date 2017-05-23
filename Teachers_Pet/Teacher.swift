@@ -89,11 +89,11 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
                         
                         if let dictionary = snapshot.value as? [String: AnyObject]
                         {
-                            let numberTracker = (dictionary.count - 3)
+                            let numberTracker = (dictionary.count - 4)
                             
                             
                             let classCreate = ["ClassName" : className, "ClassCode" : thatCode]
-                            let teacherCodeInfo = ["Class Name": className, "Teacher" : self.teacherName, "Uses" : "20", "Teacher ID" : "\(self.uidTemp)", "CodeNumber" : (numberTracker)] as [String : Any]
+                            let teacherCodeInfo = ["Class Name": className, "Teacher" : self.teacherName, "Teacher ID" : "\(self.uidTemp)", "ClassCode" : thatCode, "CodeNumber" : (numberTracker)] as [String : Any]
                             
                             let myRefTeach = ref.child("Users/\(self.uidTemp)/Teacher/ClassName\(numberTracker)")
                             myRefTeach.updateChildValues(classCreate)
