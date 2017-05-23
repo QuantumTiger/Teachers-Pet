@@ -15,10 +15,10 @@ class CalendarViewController: UIViewController, EPCalendarPickerDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
     }
-
-    @IBAction func Calendar(_ sender: Any)
+    
+    
+    @IBAction func calendar(_ sender: Any)
     {
         let calendarPicker = EPCalendarPicker(startYear: 2000, endYear: 3000, multiSelection: true, selectedDates: [])
         calendarPicker.calendarDelegate = self
@@ -35,5 +35,4 @@ class CalendarViewController: UIViewController, EPCalendarPickerDelegate
         let navigationController = UINavigationController(rootViewController: calendarPicker)
         self.present(navigationController, animated: true, completion: nil)
     }
-    
 }
