@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import ChameleonFramework
 
 class TeacherClassMainMenu: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
@@ -127,28 +128,29 @@ class TeacherClassMainMenu: UIViewController, UITableViewDataSource, UITableView
     {
         
     }
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        let cell = teacherDetailTableView.dequeueReusableCell(withIdentifier: "Teacher", for: indexPath)
-//        let presentAction = UITableViewRowAction(style: .default, title: "Present", handler:
-//        {(UITableViewRowAction, IndexPath) -> Void in
-//            cell.backgroundColor = FlatGreen()
-//            self.teacherDetailTableView.reloadData()
-//        })
-//        let tardyAction = UITableViewRowAction(style: .default, title: "Tardy", handler:
-//        {(UITableViewRowAction, IndexPath) -> Void in
-//            cell.backgroundColor = FlatYellow()
-//            self.teacherDetailTableView.reloadData()
-//        })
-//        let absentAction = UITableViewRowAction(style: .default, title: "Absent", handler:
-//        {(UITableViewRowAction, IndexPath) -> Void in
-//            cell.backgroundColor = FlatRed()
-//            self.teacherDetailTableView.reloadData()
-//        })
-//        presentAction.backgroundColor = FlatGreen()
-//        tardyAction.backgroundColor = FlatYellow()
-//        absentAction.backgroundColor = FlatRed()
-//        
-//        return [presentAction, tardyAction, absentAction]
-//    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
+    {
+        let cell = teacherDetailTableView.dequeueReusableCell(withIdentifier: "assignmentsCell", for: indexPath)
+        let presentAction = UITableViewRowAction(style: .default, title: "Present", handler:
+        {(UITableViewRowAction, IndexPath) -> Void in
+            cell.backgroundColor = FlatGreen()
+            self.teacherDetailTableView.reloadData()
+        })
+        let tardyAction = UITableViewRowAction(style: .default, title: "Tardy", handler:
+        {(UITableViewRowAction, IndexPath) -> Void in
+            cell.backgroundColor = FlatYellow()
+            self.teacherDetailTableView.reloadData()
+        })
+        let absentAction = UITableViewRowAction(style: .default, title: "Absent", handler:
+        {(UITableViewRowAction, IndexPath) -> Void in
+            cell.backgroundColor = FlatRed()
+            self.teacherDetailTableView.reloadData()
+        })
+        presentAction.backgroundColor = FlatGreen()
+        tardyAction.backgroundColor = FlatYellow()
+        absentAction.backgroundColor = FlatRed()
+        
+        return [presentAction, tardyAction, absentAction]
+    }
 
 }
