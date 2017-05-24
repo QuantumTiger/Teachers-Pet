@@ -31,7 +31,6 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
     {
         super.viewDidLoad()
         let uid = FIRAuth.auth()?.currentUser?.uid
-        studentTableView.reloadData()
         uidTemp = uid!
         grabData()
     }
@@ -125,8 +124,6 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
                             
                             
                             self.lookAtTeacherWithCount(teacherID: teacherID, codeNumber: codeNumber)
-
-                            
                             
                             ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/").observeSingleEvent(of: .value, with: { (snapshot) in
                                 
@@ -134,7 +131,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
                                 {
                                     let numberTracker = (dictionary.count)
                                     
-                                    let classesDetail = ["ClassName" : className, "TeacherName" : teacher, "TeacherID" : teacherID, "ClassNumber" : "ClassName\(numberTracker + 1)"]
+                                    let classesDetail = ["ClassName" : className, "TeacherName" : teacher, "Teacher ID" : teacherID, "ClassNumber" : "ClassName\(numberTracker + 1)"]
                                     let studentNameAdd = ["StudentName\(self.numberOfStudents)" : self.studentName]
                                     
                                     let myRef = ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName\(numberTracker + 1)")
@@ -194,7 +191,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
             
             if let dictionary = snapshot.value as? [String: AnyObject]
             {
-                let teacherIDFirebase = dictionary["TeacherID"] as! String
+                let teacherIDFirebase = dictionary["Teacher ID"] as! String
                 self.teacherID = teacherIDFirebase
                 let classNumberFirebase = dictionary["ClassNumber"] as! String
                 self.classNumbersTracker = classNumberFirebase

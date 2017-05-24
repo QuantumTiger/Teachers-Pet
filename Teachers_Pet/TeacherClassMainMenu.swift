@@ -124,7 +124,7 @@ class TeacherClassMainMenu: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
-        let cell = teacherDetailTableView.dequeueReusableCell(withIdentifier: "assignmentsCell", for: indexPath)
+        let cell = teacherDetailTableView.dequeueReusableCell(withIdentifier: "StudentsShow", for: indexPath)
         let presentAction = UITableViewRowAction(style: .default, title: "Present", handler:
         {(UITableViewRowAction, IndexPath) -> Void in
             cell.backgroundColor = FlatGreen()
