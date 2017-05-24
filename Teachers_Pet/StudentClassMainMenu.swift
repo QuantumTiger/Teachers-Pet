@@ -36,14 +36,14 @@ class StudentClassMainMenu: UIViewController, UITableViewDataSource, UITableView
             if let dictionary = snapshot.value as? [String: AnyObject]
             {
                 let numberTracker = (dictionary.count)
-                print(dictionary.count)
-                
+
                 for number in 1...numberTracker
                 {
-                    let assignmentsShow = dictionary["Assignment1"] as! String
+                    let assignmentsShow = dictionary["Assignment\(number)"] as! String
                     self.assignmentsArray.append(assignmentsShow)
                     self.assignmentsTableView.reloadData()
                 }
+                
             }
             
         }, withCancel: nil)
@@ -67,7 +67,9 @@ class StudentClassMainMenu: UIViewController, UITableViewDataSource, UITableView
         
         return cell
     }
-    @IBAction func refreshTapped(_ sender: Any) {
+    
+    @IBAction func refreshTapped(_ sender: Any)
+    {
         assignmentsTableView.reloadData()
     }
     
