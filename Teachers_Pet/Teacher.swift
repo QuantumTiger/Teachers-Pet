@@ -100,7 +100,8 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
                             
                             let myRefTeach = ref.child("Users/\(self.uidTemp)/Teacher/ClassName\(numberTracker)")
                             myRefTeach.updateChildValues(classCreate)
-                            set(teacherCodeInfo, forKey: "Users/Class Codes/\(thatCode)")
+                            let myRefPush = ref.child("Users/\(self.uidTemp)/Teacher/ClassName\(numberTracker)")
+                            myRefPush.updateChildValues(teacherCodeInfo)
                             
                             self.loopGrab(loopStart: (numberTracker), loopEnd: 100)
                             self.teacherTableView.reloadData()
