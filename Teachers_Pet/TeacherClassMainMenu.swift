@@ -96,6 +96,7 @@ class TeacherClassMainMenu: UIViewController, UITableViewDataSource, UITableView
                 }
                 else
                 {
+                    //if it fails bring an alert
                     let failure = UIAlertController(title: "Failed", message: nil, preferredStyle: .alert)
                     failure.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self.present(failure, animated: true, completion: nil)
@@ -121,7 +122,7 @@ class TeacherClassMainMenu: UIViewController, UITableViewDataSource, UITableView
         
         return cell
     }
-    
+    //adds the row actions and changes color of cell if the student is present or tardy
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
         let cell = teacherDetailTableView.dequeueReusableCell(withIdentifier: "StudentsShow", for: indexPath)

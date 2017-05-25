@@ -14,7 +14,6 @@
 		3F20E1BD1EC6028400D11E39 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20E1BC1EC6028400D11E39 /* CalendarViewController.swift */; };
 		3F27537A1ED3D8F200A487E7 /* StudentSideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2753791ED3D8F200A487E7 /* StudentSideTableViewController.swift */; };
 		3F27537C1ED3D91900A487E7 /* TeacherSideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F27537B1ED3D91900A487E7 /* TeacherSideTableViewController.swift */; };
-		3F3EFACB1ECC96AF004B9743 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EFACA1ECC96AF004B9743 /* TableViewController.swift */; };
 		3F96FE401EC0C8F80017BD75 /* HelpViewTeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96FE3F1EC0C8F80017BD75 /* HelpViewTeacherViewController.swift */; };
 		3FB7729D1EBA1D42008CC392 /* HelpButtonStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7729C1EBA1D42008CC392 /* HelpButtonStudent.swift */; };
 		3FCBDAC11EC9F3E300676D57 /* TeacherCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCBDAC01EC9F3E300676D57 /* TeacherCalendar.swift */; };
@@ -58,7 +57,6 @@
 		3F20E1BC1EC6028400D11E39 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		3F2753791ED3D8F200A487E7 /* StudentSideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentSideTableViewController.swift; path = ../StudentSideTableViewController.swift; sourceTree = "<group>"; };
 		3F27537B1ED3D91900A487E7 /* TeacherSideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherSideTableViewController.swift; sourceTree = "<group>"; };
-		3F3EFACA1ECC96AF004B9743 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		3F96FE3F1EC0C8F80017BD75 /* HelpViewTeacherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewTeacherViewController.swift; sourceTree = "<group>"; };
 		3FB7729C1EBA1D42008CC392 /* HelpButtonStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpButtonStudent.swift; sourceTree = "<group>"; };
 		3FCBDAC01EC9F3E300676D57 /* TeacherCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherCalendar.swift; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 		3F2753781ED2599000A487E7 /* Miscelleneaus */ = {
 			isa = PBXGroup;
 			children = (
-				3F3EFACA1ECC96AF004B9743 /* TableViewController.swift */,
 				3FF867211E82BE6700513A63 /* Info.plist */,
 				3F0C83981E83628D00610A07 /* GoogleService-Info.plist */,
 				3FF8671E1E82BE6700513A63 /* LaunchScreen.storyboard */,
@@ -428,7 +425,6 @@
 				3FE49C1B1E9AD6C1008887F6 /* Teacher.swift in Sources */,
 				3F02EAA51EB2387E000DC02D /* StudentClassMainMenu.swift in Sources */,
 				3FB7729D1EBA1D42008CC392 /* HelpButtonStudent.swift in Sources */,
-				3F3EFACB1ECC96AF004B9743 /* TableViewController.swift in Sources */,
 				3F193CBC1ED45D7C0009F5FA /* AssignmentsViewController.swift in Sources */,
 				3F96FE401EC0C8F80017BD75 /* HelpViewTeacherViewController.swift in Sources */,
 				3FF867181E82BE6700513A63 /* ViewController.swift in Sources */,

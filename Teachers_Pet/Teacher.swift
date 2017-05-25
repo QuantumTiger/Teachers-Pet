@@ -68,6 +68,7 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     @IBAction func teacheraddButtonPressed(_ sender: Any)
     {
+        //an action sheet that refreshs the tableview and also adds a new class
         let actions = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         actions.addAction(UIAlertAction(title: "Create a New Class", style: .default, handler: classCreation))
         actions.addAction(UIAlertAction(title: "Refresh", style: .default, handler: { (action) in

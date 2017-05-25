@@ -14,6 +14,7 @@ class TeacherSideTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //changes the background color of the side menu
         tableView.backgroundColor = UIColor(gradientStyle: UIGradientStyle.leftToRight, withFrame: tableView.frame, andColors: [FlatGrayDark(), FlatGray(), FlatTeal(), FlatTealDark()])
     }
 
