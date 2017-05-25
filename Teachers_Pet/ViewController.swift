@@ -14,6 +14,7 @@ import FirebaseDatabase
 import ChameleonFramework
 import SCLAlertView
 
+
 class ViewController: UIViewController
 {
     @IBOutlet weak var emailTextField: UITextField!
@@ -309,7 +310,7 @@ class ViewController: UIViewController
                 self.addUserToFirebase(textFieldName.text!, textFieldClassName.text!, "Teacher")
             }
 
-            //GO TO CONTROLLER HERE
+            //goes to another storyboard when you signup
             self.goToController(storyboardName: "Teacher")
         }
         _ = alert.addButton("Back", action: {
@@ -317,13 +318,13 @@ class ViewController: UIViewController
             self.alertUICreate()
         })
         
-        
+        //brings up the alert
         alert.showEdit("", subTitle: "")
     }
     
     func goToController(storyboardName: String)
     {
-        //swtiches storyboards
+        //switches storyboards
         let storyboard = UIStoryboard(name: storyboardName + "Storyboard", bundle: nil)
         let controller = storyboard.instantiateInitialViewController()
         self.present(controller!, animated: true, completion: nil)
@@ -398,6 +399,7 @@ class ViewController: UIViewController
         }
         else
         {
+            //brings up alert view
             let failure = SCLAlertView()
             failure.showWarning("Invalid Class Code", subTitle: "")
         }
@@ -406,7 +408,7 @@ class ViewController: UIViewController
 
     func alertViewNilHandler(_ title: String, _ message: String)
     {
-        //error
+        //brings up alert view when there is an error
 
         let alert = SCLAlertView()
         alert.showError(title, subTitle: message)
