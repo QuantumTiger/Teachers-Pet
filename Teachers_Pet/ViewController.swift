@@ -339,13 +339,13 @@ class ViewController: UIViewController
         let values = ["Email": self.emailTextField.text, "Password" : self.passwordTextField.text]
         let teacherCodeInfo = ["Class Name": classNameOrCode, "Teacher" : yourName, "Uses" : "20", "Teacher ID" : "\(self.uidTemp)", "CodeNumber" : 1, "ClassCode" : thatCode] as [String : Any]
         let studentInfo = ["Student Name" : yourName, "Student ID" : "\(self.uidTemp)"]
-        let teacherInfo = ["Class Name": className, "Teacher" : self.teacherName, "Teacher ID" : "\(self.uidTemp)", "ClassCode" : thatCode, "CodeNumber" : "ClassName1"] as [String : Any]
+        let teacherInfo = ["Class Name": classNameOrCode, "Teacher" : yourName, "Teacher ID" : "\(self.uidTemp)", "ClassCode" : thatCode, "CodeNumber" : "ClassName1"] as [String : Any]
         let className = ["ClassName" : classNameOrCode, "ClassCode" : thatCode]
         
         if studentORTeacher == "Teacher"
         {
             set("Teacher", forKey: "Users/\(self.uidTemp)/StudentORTeacher/")
-            set(teacheInfo, forKey: "Users/\(self.uidTemp)/Teacher/")
+            set(teacherInfo, forKey: "Users/\(self.uidTemp)/Teacher/")
             set(className, forKey: "Users/\(self.uidTemp)/Teacher/ClassName1")
             set(values, forKey: "Users/\(self.uidTemp)/Teacher/Teacher Account/")
             set(teacherCodeInfo, forKey: "Users/Class Codes/\(thatCode)")
