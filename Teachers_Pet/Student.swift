@@ -29,6 +29,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     override func viewDidLoad()
     {
+        //Retrieves data for operation of the app
         super.viewDidLoad()
         let uid = FIRAuth.auth()?.currentUser?.uid
         uidTemp = uid!
@@ -37,6 +38,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     func grabData()
     {
+        //Grabs data from firebase and sets it to the array so that it can be viewed on a table view
         ref.child("Users/\(uidTemp)/Student/Classes Enrolled/").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject]
@@ -46,9 +48,11 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
                 
                 for number in 1...numberTracker
                 {
+                    //Loops through firebase to show the class name and the teacher name of each class
                     ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName\(number)").observeSingleEvent(of: .value, with: { (snapshot) in
                         if let dictionary = snapshot.value as? [String: AnyObject]
                         {
+                            //Looks at dictionary name of Firebase and sets it to the array for Tableview
                             let className = dictionary["ClassName"] as! String
                             self.classesTable.append(className)
                             let teacherName = dictionary["TeacherName"] as! String
@@ -62,7 +66,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
             }
             
         }, withCancel: nil)
-        
+        //Retrieves name of the user
         ref.child("Users/\(uidTemp)/Student/").observeSingleEvent(of: .value, with: { (snapshot) in
     
             if let dictionary = snapshot.value as? [String: AnyObject]
@@ -75,7 +79,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
         }, withCancel: nil)
         
     }
-    
+    //Function for entering a class code for more classes to be signed up
     @IBAction func plusButtonTapped(_ sender: Any)
     {
         let actions = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -84,6 +88,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
         present(actions, animated: true, completion: nil)
     }
     
+    //Keeps track in how many people are in a specific class so that the student can properly be added to firebase
     func lookAtTeacherWithCount(teacherID : String, codeNumber : Int)
     {
         ref.child("Users/\(teacherID)/Teacher/ClassName\(codeNumber)/Students Enrolled").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -99,7 +104,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
             
         }, withCancel: nil)
     }
-
+    //Function behind entering a code, checks for the code in firebase. Once the code is found, it will get all that data for the student
     func enterTheClassCode(_: UIAlertAction)
     {
         let alert = UIAlertController(title: "Enter a code:", message: "(case sensitive)", preferredStyle: .alert)
@@ -108,6 +113,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
             {   _ in
                 if let code = alert.textFields?[0].text
                 {
+                    //Looks at the data within the code
                     ref.child("Users/Class Codes/\(code)").observeSingleEvent(of: .value, with: { (snapshot) in
                         
                         if let dictionary = snapshot.value as? [String: AnyObject]
@@ -125,6 +131,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
                             
                             self.lookAtTeacherWithCount(teacherID: teacherID, codeNumber: codeNumber)
                             
+                            //Registers the student to the Teacher so that the teacher knows who is enrolled
                             ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/").observeSingleEvent(of: .value, with: { (snapshot) in
                                 
                                 if let dictionary = snapshot.value as? [String: AnyObject]
@@ -164,11 +171,13 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
         present(alert, animated: true, completion: nil)
     }
     
+    //Table view setup
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return teacherTable.count
     }
     
+    //Gets data from Array so that the Tableview can be setup
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = studentTableView.dequeueReusableCell(withIdentifier: "Student", for: indexPath)
@@ -182,6 +191,7 @@ class Student: UIViewController, UITableViewDataSource, UITableViewDelegate
         return cell
     }
     
+    //Selects the class in the tableview so it pushes the information to StudentClassMainMenu controller for further usage
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let studentClassMainMenu = storyboard?.instantiateViewController(withIdentifier: "assignmentTable") as! StudentClassMainMenu

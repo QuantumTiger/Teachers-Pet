@@ -24,6 +24,7 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
     
     override func viewDidLoad()
     {
+        //Basic data pull
         super.viewDidLoad()
         let uid = FIRAuth.auth()?.currentUser?.uid
         uidTemp = uid!
@@ -31,6 +32,7 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
         grabData()
     }
     
+    //Pulls data from firebase to look at who needs help
     func grabData()
     {
         ref.child("Users/\(uidTemp)/Teacher/Help Section").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -50,12 +52,13 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
         }, withCancel: nil)
         
     }
-
+    //Tableview setup
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return studentName.count
     }
     
+    //Gets date from array and is used in the tableview
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = helpShowTableView.dequeueReusableCell(withIdentifier: "HelpShowCell", for: indexPath)
@@ -66,7 +69,7 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
         
         return cell
     }
-    
+    //Enables the teacher to remove a student after they have been helped
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
         if editingStyle == .delete
@@ -80,7 +83,9 @@ class HelpViewTeacherViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    @IBAction func refreshTapped(_ sender: Any) {
+    //Refresshes the tableview
+    @IBAction func refreshTapped(_ sender: Any)
+    {
         helpShowTableView.reloadData()
     }
 }

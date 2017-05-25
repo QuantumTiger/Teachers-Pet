@@ -18,11 +18,12 @@ class StudentClassMainMenu: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad()
     {
+        //Basic retrieval of data
         super.viewDidLoad()
         let uid = FIRAuth.auth()?.currentUser?.uid
         uidTemp = uid!
-        print(teacherID)
-        print(className)
+//        print(teacherID)
+//        print(className)
         grabData()
         
         navigationController?.isNavigationBarHidden = true

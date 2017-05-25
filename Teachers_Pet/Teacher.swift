@@ -66,6 +66,7 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
         }
     }
     
+    //In charge of creating classes or refreshing
     @IBAction func teacheraddButtonPressed(_ sender: Any)
     {
         let actions = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -78,26 +79,32 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
         present(actions, animated: true, completion: nil)
     }
 
+    //Creates the class for the function
     func classCreation(_: UIAlertAction)
     {
+        //Textfields to insert information
         let alert = UIAlertController(title: "Enter a Name:", message: nil, preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
         alert.addAction(UIAlertAction(title: "Done", style: .default, handler:
             {   _ in
+                //Grabs data from text to push to firebase
                 if let className = alert.textFields?[0].text
                 {
+                    //Creates the random code
                     let thatCode = randomCode
                     
                     ref.child("Users/\(self.uidTemp)/Teacher/").observeSingleEvent(of: .value, with: { (snapshot) in
                         
                         if let dictionary = snapshot.value as? [String: AnyObject]
                         {
+                            //Keeps track of the class number
                             let numberTracker = (dictionary.count - 4)
-                            
-                            
+                    
+                            //Creates the class with the designated number
                             let classCreate = ["ClassName" : className, "ClassCode" : thatCode]
                             let teacherCodeInfo = ["Class Name": className, "Teacher" : self.teacherName, "Teacher ID" : "\(self.uidTemp)", "ClassCode" : thatCode, "CodeNumber" : (numberTracker)] as [String : Any]
                             
+                            //Creates the class for the teacher and pushes to firebase
                             let myRefTeach = ref.child("Users/\(self.uidTemp)/Teacher/ClassName\(numberTracker)")
                             myRefTeach.updateChildValues(classCreate)
                             let myRefPush = ref.child("Users/\(self.uidTemp)/Teacher/ClassName\(numberTracker)")
@@ -111,6 +118,7 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
                 }
                 else
                 {
+                    //If fails error alert
                     let failure = UIAlertController(title: "Failed", message: nil, preferredStyle: .alert)
                     failure.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self.present(failure, animated: true, completion: nil)
@@ -121,11 +129,13 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
         present(alert, animated: true, completion: nil)
     }
     
+    //Tableview setup
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return classesTable.count
     }
     
+    //Arrays that Tableview will use to load data
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = teacherTableView.dequeueReusableCell(withIdentifier: "Teacher", for: indexPath)
@@ -139,6 +149,7 @@ class Teacher: UIViewController, UITableViewDataSource, UITableViewDelegate
         return cell
     }
     
+    //Passes over data to specified controllers when tapped at a tableview cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let teacherClassMenu = storyboard?.instantiateViewController(withIdentifier: "TeacherClassMainMenu") as! TeacherClassMainMenu

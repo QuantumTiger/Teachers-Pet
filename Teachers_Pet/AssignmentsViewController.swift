@@ -23,6 +23,7 @@ class AssignmentsViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad()
     {
+        //Basic data pull
         super.viewDidLoad()
         let uid = FIRAuth.auth()?.currentUser?.uid
         uidTemp = uid!
@@ -31,12 +32,14 @@ class AssignmentsViewController: UIViewController, UITableViewDataSource, UITabl
     
     func grabData()
     {
+        //Looks at location in firebase
         ref.child("Users/\(uidTemp)/Teacher/Assignments").observeSingleEvent(of: .value, with: { (snapshot) in
     
             if let dictionary = snapshot.value as? [String: AnyObject]
             {
                 for number in 1...dictionary.count
                 {
+                    //Loads all the assignments from firebase
                     print(dictionary.count)
                     let assignments = dictionary["Assignment\(number)"] as? String
                     self.assignmentsShow.append(assignments!)
@@ -44,15 +47,15 @@ class AssignmentsViewController: UIViewController, UITableViewDataSource, UITabl
                 }
             }
             
-            }, withCancel: nil)
+        }, withCancel: nil)
     }
 
-    
+    //Tableview setup
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return assignmentsShow.count
     }
-    
+    //Gets data from array and its used for the Tableview
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = assignmentsTableView.dequeueReusableCell(withIdentifier: "Assignments", for: indexPath)

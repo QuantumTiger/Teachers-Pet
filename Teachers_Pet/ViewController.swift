@@ -363,18 +363,19 @@ class ViewController: UIViewController
             set(studentInfo, forKey: "Users/\(self.uidTemp)/Student/")
             set(values, forKey: "Users/\(self.uidTemp)/Student/Student Account")
             
-            
+            //Looks at firebase location
             ref.child("Users/Class Codes/\(classNameOrCode)").observeSingleEvent(of: .value, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: AnyObject]
                 {
+                    //Gets data from the class code
                     let className = dictionary["Class Name"] as! String
                     let codeNumber = dictionary["CodeNumber"] as! Int
                     let teacher = dictionary["Teacher"] as! String
                     let teacherID = dictionary["Teacher ID"] as! String
-                    let uses = dictionary["Uses"] as? String
                 
                     ref.child("Users/\(teacherID)/Teacher/ClassName\(codeNumber)/Students Enrolled").observeSingleEvent(of: .value, with: { (snapshot) in
                         
+                        //Saves the data to firebase student account
                         if let dictionary = snapshot.value as? [String: AnyObject]
                         {
                             let studentCount = (dictionary.count + 1)

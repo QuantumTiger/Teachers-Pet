@@ -25,6 +25,7 @@ class HelpButtonStudent: UIViewController
     
     override func viewDidLoad()
     {
+        //Retrieves basic data to operate the app
         super.viewDidLoad()
         helpButton.isUserInteractionEnabled = true
         let uid = FIRAuth.auth()?.currentUser?.uid
@@ -40,7 +41,7 @@ class HelpButtonStudent: UIViewController
             if let dictionary = snapshot.value as? [String: AnyObject]
             {
                 self.classCounter = (dictionary.count)
-                
+                //Looks at the snapshot so that it can retreive data
                 ref.child("Users/\(self.uidTemp)/Student/Classes Enrolled/ClassName\(self.classCounter)").observeSingleEvent(of: .value, with: { (snapshot) in
                     
                     if let dictionary = snapshot.value as? [String: AnyObject]
@@ -54,6 +55,7 @@ class HelpButtonStudent: UIViewController
                             {
                                 let studentsCount = dictionary.count
                                 
+                                //Gets all the data from the help section so that it can push any changes to it later
                                 for number in 1...studentsCount
                                 {
                                     let studentsShow = dictionary["StudentName\(number)"] as! String
@@ -70,6 +72,7 @@ class HelpButtonStudent: UIViewController
             
         }, withCancel: nil)
 
+        //Looks at data, and sets the Student Name for pushing to firebase purposes
         ref.child("Users/\(uidTemp)/Student/").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject]
@@ -90,6 +93,7 @@ class HelpButtonStudent: UIViewController
         
         let help = ["StudentName\(classCounter)" : studentName]
         
+        //When pressed it will push the student who needs help, it will go to firebase so that the teacher can see who needs help
         let myRefPush = ref.child("Users/\(teacherID)/Teacher/Help Section")
         myRefPush.updateChildValues(help)
     }
