@@ -21,7 +21,7 @@ class CalendarViewController: UIViewController, EPCalendarPickerDelegate
         myView.backgroundColor = UIColor(gradientStyle: UIGradientStyle.topToBottom, withFrame: myView.frame, andColors: [FlatWhite(),FlatWhiteDark(), FlatRedDark(), FlatRed()])
     }
     
-    //pulls up calendar when calendar image is clicked
+    //Pulls up calendar when calendar image is clicked. Uses EPCalendarPicker cocoapod. 
     @IBAction func calendar(_ sender: Any)
     {
         let calendarPicker = EPCalendarPicker(startYear: 2000, endYear: 3000, multiSelection: true, selectedDates: [])

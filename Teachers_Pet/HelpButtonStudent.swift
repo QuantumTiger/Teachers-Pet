@@ -31,6 +31,8 @@ class HelpButtonStudent: UIViewController
         let uid = FIRAuth.auth()?.currentUser?.uid
         uidTemp = uid!
         grabData()
+        
+        //animation for background for the help button view controller.
         myView.backgroundColor = UIColor(gradientStyle: UIGradientStyle.radial, withFrame: myView.frame, andColors: [FlatOrange(),FlatOrangeDark(), FlatLimeDark(), FlatLime()])
     }
 
@@ -103,9 +105,5 @@ class HelpButtonStudent: UIViewController
     {
         print("Nothing Should Happen, too Much work for firebase code")
         self.helpButton.image = UIImage(named: "helpbutton")
-//        
-//        let myRefPull = ref.child("Users/\(teacherID)/Teacher/Help Section/StudentName")
-        
-//        updateFire(fireBaseString:  "Users/\(uidTemp)/Teacher/Help Section", array: storeTheNames)
     }
 }
